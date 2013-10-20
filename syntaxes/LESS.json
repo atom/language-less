@@ -1,0 +1,275 @@
+{
+  "comment": "LeSS",
+  "fileTypes": [
+    "less"
+  ],
+  "foldingStartMarker": "/\\*\\*(?!\\*)|\\{\\s*($|/\\*(?!.*?\\*/.*\\S))",
+  "foldingStopMarker": "(?<!\\*)\\*\\*/|^\\s*\\}",
+  "keyEquivalent": "^~L",
+  "name": "LESS",
+  "patterns": [
+    {
+      "match": "\\b(a|abbr|acronym|address|applet|article|area|audio|video|b|base|big|blockquote|body|br|button|caption|canvas|center|cite|code|col|colgroup|dd|del|details|dfn|div|dl|dt|em|embed|fieldset|figure|figcaption|form|frame|frameset|(h[1-6])|head|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|map|mark|meta|menu|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|q|ruby|s|samp|script|select|small|span|strike|strong|style|sub|sup|summary|svg|table|tbody|td|textarea|tfoot|th|thead|title|tr|tt|u|ul|var|header|section|footer|aside|hgroup|time)\\b",
+      "name": "keyword.control.html.elements"
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.css"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.css"
+        }
+      },
+      "name": "string.quoted.double.css",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escaped.css"
+        }
+      ]
+    },
+    {
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.css"
+        }
+      },
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.css"
+        }
+      },
+      "name": "string.quoted.single.css",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escaped.css"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.other.attribute-name.class.css"
+        }
+      },
+      "match": "(\\.[a-zA-Z0-9_-]+)"
+    },
+    {
+      "begin": "url\\(",
+      "contentName": "variable.parameter.url",
+      "end": "\\)",
+      "name": "support.function.any-method.builtin.css"
+    },
+    {
+      "match": "(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b",
+      "name": "constant.other.rgb-value.css"
+    },
+    {
+      "captures": {
+        "0": {
+          "name": "entity.other.attribute-name.id"
+        }
+      },
+      "match": "#[a-zA-Z0-9_:\\(\\)-]+",
+      "name": "meta.selector.css"
+    },
+    {
+      "begin": "/\\*",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.begin.css"
+        }
+      },
+      "end": "\\*/",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.end.css"
+        }
+      },
+      "name": "comment.block.css"
+    },
+    {
+      "match": "(-|\\+)?\\s*[0-9]+(\\.[0-9]+)?",
+      "name": "constant.numeric.css"
+    },
+    {
+      "match": "(?<=[\\d])(px|pt|cm|mm|in|em|ex|pc)\\b|%",
+      "name": "keyword.other.unit.css"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.other.attribute-name.pseudo-element.css"
+        }
+      },
+      "match": "(:+(after|before|not|last-child|nth-of-type|nth-child|first-child|first-letter|first-line|selection|root))"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "entity.other.attribute-name.pseudo-class.css"
+        }
+      },
+      "match": "(:+(active|hover|link|visited|focus))"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.entity.css"
+        },
+        "2": {
+          "name": "entity.other.attribute-name.attribute.css"
+        },
+        "3": {
+          "name": "punctuation.separator.operator.css"
+        },
+        "4": {
+          "name": "string.unquoted.attribute-value.css"
+        },
+        "5": {
+          "name": "string.quoted.double.attribute-value.css"
+        },
+        "6": {
+          "name": "punctuation.definition.string.begin.css"
+        },
+        "7": {
+          "name": "punctuation.definition.string.end.css"
+        }
+      },
+      "match": "(?i)(\\[)\\s*(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)(?:\\s*([~|^$*]?=)\\s*(?:(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)|((?>(['\"])(?:[^\\\\]|\\\\.)*?(\\6)))))?\\s*(\\])",
+      "name": "meta.attribute-selector.css"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.at-rule.import.css"
+        },
+        "2": {
+          "name": "punctuation.definition.keyword.css"
+        }
+      },
+      "match": "^\\s*((@)import\\b)",
+      "name": "meta.at-rule.import.css"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "support.type.property-name.css.vendor"
+        }
+      },
+      "match": "(-(?:webkit|moz|khtml|o|icab|ms)-(?:background-size|border-radius|box-shadow|opacity|border-image))\\s*:"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "support.type.property-name.css"
+        }
+      },
+      "match": "\\b(azimuth|background-attachment|background-color|background-clip|background-image|background-position|background-repeat|background-size|background|behavior|border-bottom-color|border-bottom-style|border-bottom-width|border-bottom|border-collapse|border-color|border-left-color|border-left-style|border-left-width|border-left|border-right-color|border-right-style|border-right-width|border-right|border-spacing|border-style|border-top-color|border-top-style|border-top-width|border-top|border-width|border-radius|border|box-shadow|bottom|caption-side|clear|clip|color|content|counter-increment|counter-reset|cue-after|cue-before|cue|cursor|direction|display|elevation|empty-cells|filter|float|font-family|font-size-adjust|font-size|font-stretch|font-style|font-variant|font-weight|font|height|left|letter-spacing|line-height|list-style-image|list-style-position|list-style-type|list-style|margin-bottom|margin-left|margin-right|margin-top|marker-offset|margin|marks|max-height|max-width|min-height|min-width|opacity|orphans|outline-color|outline-style|outline-width|outline|overflow(-[xy])?|padding-bottom|padding-left|padding-right|padding-top|padding|page-break-after|page-break-before|page-break-inside|page|pause-after|pause-before|pause|pitch-range|pitch|play-during|position|pre-wrap|quotes|richness|right|size|speak-header|speak-numeral|speak-punctuation|speech-rate|speak|stress|table-layout|text-align|text-decoration|text-indent|text-shadow|text-transform|top|unicode-bidi|vertical-align|visibility|voice-family|volume|white-space|widows|width|word-spacing|word-wrap|z-index|zoom)"
+    },
+    {
+      "match": "\\b(absolute|all-scroll|always|auto|baseline|below|bidi-override|block|bold|bolder|both|bottom|break-all|break-word|capitalize|center|char|circle|col-resize|collapse|crosshair|dashed|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|groove|hand|help|hidden|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|keep-all|left|lighter|line-edge|line-through|line|linear|list-item|loose|lower-alpha|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|outset|outside|overline|pointer|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-roman|uppercase|vertical-ideographic|vertical-text|visible|w-resize|wait|whitespace|padding-box)\\b",
+      "name": "support.constant.property-value.css"
+    },
+    {
+      "match": "(\\b(?i:arial|century|comic|courier|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\\b)",
+      "name": "support.constant.font-name.css"
+    },
+    {
+      "comment": "http://www.w3.org/TR/CSS21/syndata.html#value-def-color",
+      "match": "\\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\\b",
+      "name": "support.constant.color.w3c-standard-color-name.css"
+    },
+    {
+      "match": "\\b(saturate|desaturate|lighten|darken|grayscale)\\b",
+      "name": "support.function.any-method.builtin.less"
+    },
+    {
+      "match": "\\b(rgb|rgba|hsl|hsla|url)\\b",
+      "name": "support.function.any-method.builtin.css"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "support.function.any-method.vendor.css"
+        }
+      },
+      "match": "(-(?:webkit|moz|khtml|o|icab)-(?:gradient|linear-gradient))"
+    },
+    {
+      "match": "\\b(color-stop|from|to)\\b",
+      "name": "support.function.any-method.webkit.gradient.css"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "support.function.less"
+        }
+      },
+      "match": "(\\.[a-zA-Z0-9_-]+)\\s*(;|\\()"
+    },
+    {
+      "begin": "(^[ \\t]+)?(?=//)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.less"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.less"
+            }
+          },
+          "end": "\\n",
+          "name": "comment.line.double-slash.less"
+        }
+      ]
+    },
+    {
+      "match": "@[a-zA-Z0-9_-][\\w-]*",
+      "name": "variable.other.less"
+    },
+    {
+      "match": "\\$|%|&|\\*|\\-\\-|\\-|\\+\\+|\\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\\|\\||\\?\\:|\\*=|(?<!\\()/=|%=|\\+=|\\-=|&=|\\^=|\\/\\b",
+      "name": "keyword.operator.less"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.section.property-list.begin.css"
+        },
+        "2": {
+          "name": "punctuation.section.property-list.end.css"
+        }
+      },
+      "comment": "Match empty braces to give proper ↩ action",
+      "match": "(\\{)(\\})",
+      "name": "meta.brace.curly.less"
+    },
+    {
+      "match": "\\{|\\}",
+      "name": "meta.brace.curly.less"
+    },
+    {
+      "match": "\\(|\\)",
+      "name": "meta.brace.round.less"
+    },
+    {
+      "match": "\\[|\\]",
+      "name": "meta.brace.square.less"
+    }
+  ],
+  "scopeName": "source.css.less"
+}
