@@ -21,6 +21,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------
 
+This package was derived from a TextMate bundle located at
+https://github.com/textmate/less.tmbundle and distributed under the following
+license, located in `LICENSE.md`:
+
 Copyright (c) 2010 Scott Kyle and Rasmus Andersson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
