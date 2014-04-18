@@ -22,7 +22,7 @@
     'name': 'string.quoted.double.css'
     'patterns': [
       {
-        'match': '\\\\.'
+        'match': '\\\\(\\d{1,6}|.)'
         'name': 'constant.character.escaped.css'
       }
     ]
