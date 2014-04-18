@@ -130,7 +130,7 @@
     'captures':
       '1':
         'name': 'support.type.property-name.css.vendor'
-    'match': '(-(?:webkit|moz|khtml|o|icab|ms)-(?:background-size|border-radius|box-shadow|opacity|border-image))\\s*:'
+    'match': '(-(?:webkit|moz|khtml|o|icab|ms)-(?:background-size|border-radius|box-shadow|opacity|border-image|font-smoothing))\\s*:'
   }
   {
     'captures':
