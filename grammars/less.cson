@@ -152,7 +152,7 @@
     'name': 'support.constant.color.w3c-standard-color-name.css'
   }
   {
-    'match': '\\b(saturate|desaturate|lighten|darken|grayscale)\\b'
+    'match': '\\b(saturate|desaturate|lighten|darken|fadein|fadeout|spin|mix|greyscale|contrast)\\b'
     'name': 'support.function.any-method.builtin.less'
   }
   {
