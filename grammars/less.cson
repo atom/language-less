@@ -79,7 +79,7 @@
     'name': 'comment.block.css'
   }
   {
-    'match': '(-|\\+)?\\s*[0-9]+(\\.[0-9]+)?'
+    'match': '[+-]?\\d*\\.?\\d+'
     'name': 'constant.numeric.css'
   }
   {
