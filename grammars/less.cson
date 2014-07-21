@@ -2,6 +2,7 @@
 'scopeName': 'source.css.less'
 'fileTypes': [
   'less'
+  'less.erb'
 ]
 'foldingStartMarker': '/\\*\\*(?!\\*)|\\{\\s*($|/\\*(?!.*?\\*/.*\\S))'
 'foldingStopMarker': '(?<!\\*)\\*\\*/|^\\s*\\}'
