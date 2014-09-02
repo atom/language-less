@@ -55,3 +55,12 @@ describe "less grammar", ->
     expect(tokens[1]).toEqual value: ": ", scopes: ['source.css.less']
     expect(tokens[2]).toEqual value: "fixed", scopes: ['source.css.less', 'support.constant.property-value.css']
     expect(tokens[3]).toEqual value: ";", scopes: ['source.css.less']
+
+  it "parses id selectors", ->
+    {tokens} = grammar.tokenizeLine("#abc {}")
+    expect(tokens).toHaveLength 4
+    expect(tokens[0]).toEqual value: "#abc", scopes: ['source.css.less', 'meta.selector.css', 'entity.other.attribute-name.id']
+
+    {tokens} = grammar.tokenizeLine("#abc-123 {}")
+    expect(tokens).toHaveLength 4
+    expect(tokens[0]).toEqual value: "#abc-123", scopes: ['source.css.less', 'meta.selector.css', 'entity.other.attribute-name.id']
