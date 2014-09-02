@@ -47,3 +47,11 @@ describe "less grammar", ->
     expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less']
     expect(tokens[2]).toEqual value: "left", scopes: ['source.css.less', 'support.constant.property-value.css']
     expect(tokens[3]).toEqual value: ";", scopes: ['source.css.less']
+
+  it "parses property names distinctly from element selectors with the same prefix", ->
+    {tokens} = grammar.tokenizeLine("table-layout: fixed;")
+    expect(tokens).toHaveLength 4
+    expect(tokens[0]).toEqual value: "table-layout", scopes: ['source.css.less', 'support.type.property-name.css']
+    expect(tokens[1]).toEqual value: ": ", scopes: ['source.css.less']
+    expect(tokens[2]).toEqual value: "fixed", scopes: ['source.css.less', 'support.constant.property-value.css']
+    expect(tokens[3]).toEqual value: ";", scopes: ['source.css.less']
