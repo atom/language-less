@@ -48,6 +48,12 @@
   {
     'captures':
       '1':
+        'name': 'entity.other.attribute-name.class.mixin.css'
+    'match': '(\\.[_a-zA-Z][a-zA-Z0-9_-]*(?=\\())'
+  }
+  {
+    'captures':
+      '1':
         'name': 'entity.other.attribute-name.class.css'
     'match': '(\\.[_a-zA-Z][a-zA-Z0-9_-]*)'
   }
@@ -84,14 +90,14 @@
     'name': 'constant.numeric.css'
   }
   {
-    'match': '(?<=[\\d])(px|pt|cm|mm|in|em|ex|pc)\\b|%'
+    'match': '(?<=[\\d])(px|pt|cm|mm|in|em|ex|pc|ms|deg)\\b|%'
     'name': 'keyword.other.unit.css'
   }
   {
     'captures':
       '1':
         'name': 'entity.other.attribute-name.pseudo-element.css'
-    'match': '(:+(after|before|not|last-child|nth-of-type|nth-child|first-child|first-letter|first-line|selection|root))'
+    'match': '(:+(after|before|not|last-child|nth-of-type|nth-child|first-child|first-letter|first-line|selection|root|checked))'
   }
   {
     'captures':
@@ -131,16 +137,16 @@
     'captures':
       '1':
         'name': 'support.type.property-name.css.vendor'
-    'match': '(-(?:webkit|moz|khtml|o|icab|ms)-(?:background-size|border-radius|box-shadow|opacity|border-image|font-smoothing))\\s*:'
+    'match': '(-(?:webkit|moz|khtml|o|icab|ms)-(?:background-size|border-radius|box-shadow|opacity|border-image|font-smoothing|transform|backface-visibility|perspective|animation-name|animation-duration|animation-iteration-count|animation-direction|animation-delay|background-clip|filter))\\s*:'
   }
   {
     'captures':
       '1':
         'name': 'support.type.property-name.css'
-    'match': '\\b(azimuth|background-attachment|background-color|background-clip|background-image|background-position|background-repeat|background-size|background|behavior|border-bottom-color|border-bottom-style|border-bottom-width|border-bottom|border-collapse|border-color|border-left-color|border-left-style|border-left-width|border-left|border-right-color|border-right-style|border-right-width|border-right|border-spacing|border-style|border-top-color|border-top-style|border-top-width|border-top|border-width|border-radius|border(?!-)|box-shadow|box-sizing|bottom|caption-side|clear|clip|color|content(?!-)|counter-increment|counter-reset|cue-after|cue-before|cue|cursor|direction|display|elevation|empty-cells|filter|float|font-family|font-size-adjust|font-size|font-stretch|font-style|font-variant|font-weight|font|height|left|letter-spacing|line-height|list-style-image|list-style-position|list-style-type|list-style|margin-bottom|margin-left|margin-right|margin-top|marker-offset|margin|marks|max-height|max-width|min-height|min-width|opacity|orphans|outline-color|outline-style|outline-width|outline|overflow(-[xy])?|padding-bottom|padding-left|padding-right|padding-top|padding(?!-)|page-break-after|page-break-before|page-break-inside|page|pause-after|pause-before|pause|pitch-range|pitch|play-during|position|pre-wrap|quotes|richness|right|size|speak-header|speak-numeral|speak-punctuation|speech-rate|speak|stress|table-layout|text-align|text-decoration|text-indent|text-overflow|text-shadow|text-transform|top|unicode-bidi|vertical-align|visibility|voice-family|volume|white-space|widows|width|word-spacing|word-wrap|z-index|zoom)(?=\\s*:)'
+    'match': '\\b(animation|azimuth|background-attachment|background-color|background-clip|background-image|background-position|background-repeat|background-size|background|behavior|border-bottom-color|border-bottom-style|border-bottom-width|border-bottom|border-collapse|border-color|border-left-color|border-left-style|border-left-width|border-left|border-right-color|border-right-style|border-right-width|border-right|border-spacing|border-style|border-top-color|border-top-style|border-top-width|border-top|border-width|border-radius|border(?!-)|box-shadow|box-sizing|bottom|caption-side|clear|clip|color|content(?!-)|counter-increment|counter-reset|cue-after|cue-before|cue|cursor|direction|display|elevation|empty-cells|filter|float|font-family|font-size-adjust|font-size|font-stretch|font-style|font-variant|font-weight|font|height|left|letter-spacing|line-height|list-style-image|list-style-position|list-style-type|list-style|margin-bottom|margin-left|margin-right|margin-top|marker-offset|margin|marks|max-height|max-width|min-height|min-width|opacity|orphans|outline-color|outline-style|outline-width|outline|overflow(-[xy])?|padding-bottom|padding-left|padding-right|padding-top|padding(?!-)|page-break-after|page-break-before|page-break-inside|page|pause-after|pause-before|pause|pitch-range|pitch|play-during|position|pre-wrap|quotes|resize|richness|right|size|speak-header|speak-numeral|speak-punctuation|speech-rate|speak|stress|table-layout|text-align|text-decoration|text-indent|text-overflow|text-shadow|text-transform|top|transform|unicode-bidi|vertical-align|visibility|voice-family|volume|white-space|widows|width|word-spacing|word-wrap|z-index|zoom|animation-name|animation-duration|animation-iteration-count|animation-direction|animation-delay|border-top-right-radius|border-top-left-radius|border-bottom-right-radius|border-bottom-left-radius)(?=\\s*:)'
   }
   {
-    'match': '\\b(absolute|all-scroll|always|auto|baseline|below|bidi-override|block|bold|bolder|border-box|both|bottom|break-all|break-word|capitalize|center|char|circle|col-resize|collapse|content-box|crosshair|dashed|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|groove|hand|help|hidden|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|keep-all|left|lighter|line-edge|line-through|line|linear|list-item|loose|lower-alpha|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|outset|outside|overline|padding-box|pointer|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-roman|uppercase|vertical-ideographic|vertical-text|visible|w-resize|wait|whitespace|padding-box)\\b'
+    'match': '\\b(absolute|all-scroll|always|antialiased|auto|baseline|below|bidi-override|block|bold|bolder|border-box|both|bottom|break-all|break-word|capitalize|center|char|circle|col-resize|collapse|contain|content-box|cover|crosshair|dashed|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|groove|hand|help|hidden|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|keep-all|left|lighter|line-edge|line-through|line|linear|list-item|loose|lower-alpha|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|outset|outside|overline|padding-box|pointer|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|super|sw-resize|table-footer-group|table-header-group|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-roman|uppercase|vertical-ideographic|vertical-text|visible|w-resize|wait|whitespace|padding-box|opacity|transform|max-height)\\b'
     'name': 'support.constant.property-value.css'
   }
   {
@@ -157,7 +163,7 @@
     'name': 'support.function.any-method.builtin.less'
   }
   {
-    'match': '\\b(rgb|rgba|hsl|hsla|url)\\b'
+    'match': '\\b(rgb|rgba|hsl|hsla|url|scale|scaleY|scaleX|translate|translateY|translateX|rect|rotate|skew|skewY|skewX|cubic-bezier|translate3d)\\b'
     'name': 'support.function.any-method.builtin.css'
   }
   {
