@@ -101,7 +101,7 @@
     'captures':
       '1':
         'name': 'entity.other.attribute-name.pseudo-element.css'
-    'match': '(:+(after|before|not|last-child|nth-of-type|nth-child|first-child|first-letter|first-line|selection|root|checked))'
+    'match': '(:+(after|before|not|last-child|nth-of-type|nth-child|first-child|first-letter|first-line|selection|root|checked|only-child))'
   }
   {
     'captures':
