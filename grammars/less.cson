@@ -79,7 +79,7 @@
         'name': 'entity.other.attribute-name.id'
       '2':
         'name': 'punctuation.definition.entity.css'
-    'match': '((#)[a-zA-Z0-9_:\\(\\)-]+)'
+    'match': '((#)[_a-zA-Z][a-zA-Z0-9_-]*)'
     'name': 'meta.selector.css'
   }
   {
@@ -104,14 +104,16 @@
   {
     'captures':
       '1':
-        'name': 'entity.other.attribute-name.pseudo-element.css'
-    'match': '(:+(after|before|first-letter|first-line|selection))'
+        'name': 'punctuation.definition.entity.css'
+    'match': '(:+)(after|before|first-letter|first-line|selection)'
+    'name': 'entity.other.attribute-name.pseudo-element.css'
   }
   {
     'captures':
       '1':
-        'name': 'entity.other.attribute-name.pseudo-class.css'
-    'match': '(:+(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|target|valid|visited))(?!\\s*;)'
+        'name': 'punctuation.definition.entity.css'
+    'match': '(:+)(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|target|valid|visited)(?!\\s*;)'
+    'name': 'entity.other.attribute-name.pseudo-class.css'
   }
   {
     'captures':
