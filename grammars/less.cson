@@ -75,9 +75,11 @@
   }
   {
     'captures':
-      '0':
+      '1':
         'name': 'entity.other.attribute-name.id'
-    'match': '#[a-zA-Z0-9_:\\(\\)-]+'
+      '2':
+        'name': 'punctuation.definition.entity.css'
+    'match': '((#)[a-zA-Z0-9_:\\(\\)-]+)'
     'name': 'meta.selector.css'
   }
   {
