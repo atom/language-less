@@ -248,4 +248,8 @@
     'match': '\\[|\\]'
     'name': 'meta.brace.square.less'
   }
+  {
+    'match': ';'
+    'name': 'punctuation.terminator.rule.css'
+  }
 ]
