@@ -146,6 +146,24 @@
   {
     'captures':
       '1':
+        'name': 'keyword.control.at-rule.fontface.css'
+      '2':
+        'name': 'punctuation.definition.keyword.css'
+    'match': '^\\s*((@)font-face\\b)'
+    'name': 'meta.at-rule.fontface.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.media.fontface.css'
+      '2':
+        'name': 'punctuation.definition.keyword.css'
+    'match': '^\\s*((@)media\\b)'
+    'name': 'meta.at-rule.media.css'
+  }
+  {
+    'captures':
+      '1':
         'name': 'support.type.property-name.css.vendor'
       '2':
         'name': 'punctuation.separator.key-value.css'
