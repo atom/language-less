@@ -227,6 +227,10 @@
     'name': 'keyword.operator.less'
   }
   {
+    'match': '\\s(\\=\\=|\\!\\=|\\<\\=|\\>\\=|\\<|\\>|not|or|and|when)\\s'
+    'name': 'keyword.control.logical.operator'
+  }
+  {
     'captures':
       '1':
         'name': 'punctuation.section.property-list.begin.css'
