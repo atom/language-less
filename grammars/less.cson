@@ -183,7 +183,7 @@
     'name': 'support.constant.color.w3c-standard-color-name.css'
   }
   {
-    'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|rgb|rgba|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit|unit)\\b'
+    'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|rgb|rgba|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b'
     'name': 'support.function.any-method.builtin.less'
   }
   {
