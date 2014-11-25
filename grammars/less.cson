@@ -183,7 +183,7 @@
     'name': 'support.constant.color.w3c-standard-color-name.css'
   }
   {
-    'match': '\\b(saturate|desaturate|lighten|darken|fadein|fadeout|spin|mix|greyscale|contrast)\\b'
+    'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|rgb|rgba|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit|unit)\\b'
     'name': 'support.function.any-method.builtin.less'
   }
   {
@@ -223,6 +223,10 @@
         'name': 'punctuation.definition.variable.less'
     'match': '@[a-zA-Z0-9_-][\\w-]*(?=\\s*)'
     'name': 'variable.other.less'
+  }
+  {
+    "match": "\\!\\s*important",
+    "name": "keyword.other.important.css"
   }
   {
     'match': '\\$|%|&|\\*|\\-\\-|\\-|\\+\\+|\\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\\|\\||\\?\\:|\\*=|(?<!\\()/=|%=|\\+=|\\-=|&=|\\^=|\\/\\b'
