@@ -155,7 +155,7 @@
   {
     'captures':
       '1':
-        'name': 'keyword.control.media.fontface.css'
+        'name': 'keyword.control.at-rule.media.css'
       '2':
         'name': 'punctuation.definition.keyword.css'
     'match': '^\\s*((@)media\\b)'
