@@ -6,7 +6,7 @@ describe "less grammar", ->
       atom.packages.activatePackage("language-less")
 
     runs ->
-      grammar = atom.syntax.grammarForScopeName("source.css.less")
+      grammar = atom.grammars.grammarForScopeName("source.css.less")
 
   it "parses the grammar", ->
     expect(grammar).toBeDefined()
