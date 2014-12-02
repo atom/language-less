@@ -1,4 +1,4 @@
-# LESS language support in Atom
+# LESS language support in Atom [![Build Status](https://travis-ci.org/atom/language-less.svg?branch=master)](https://travis-ci.org/atom/language-less)
 
 Adds syntax highlighting to [LESS](http://lesscss.org) files in Atom.
 
