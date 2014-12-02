@@ -191,14 +191,8 @@
     'name': 'support.constant.media.css'
   }
   {
-    'captures':
-      '1':
-        'name': 'support.function.any-method.vendor.css'
-    'match': '(-(?:webkit|moz|khtml|o|icab)-(?:gradient|linear-gradient))'
-  }
-  {
     'match': '\\b(color-stop|from|to)\\b'
-    'name': 'support.function.any-method.webkit.gradient.css'
+    'name': 'support.function.any-method.gradient.css'
   }
   {
     'captures':
