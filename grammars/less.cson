@@ -104,7 +104,7 @@
     'captures':
       '1':
         'name': 'punctuation.definition.entity.css'
-    'match': '(:+)(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|target|valid|visited)(?!\\s*;)'
+    'match': '(:+)(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|shadow|target|valid|visited)(?!\\s*;)'
     'name': 'entity.other.attribute-name.pseudo-class.css'
   }
   {
@@ -241,7 +241,7 @@
     'name': 'keyword.control.html.elements'
   }
   {
-    'match': '\\b([a-zA-Z0-9]+(-[a-zA-Z0-9]+)+)(?=\\.|\\s++[^:]|\\s*[,{]|:(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child()|nth-last-child()|nth-of-type()|nth-last-of-type()|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid)(\\([0-9A-Za-z]*\\))?)'
+    'match': '\\b([a-zA-Z0-9]+(-[a-zA-Z0-9]+)+)(?=\\.|\\s++[^:]|\\s*[,{]|:+(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child()|nth-last-child()|nth-of-type()|nth-last-of-type()|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid|shadow)(\\([0-9A-Za-z]*\\))?)'
     'name': 'keyword.control.html.custom.elements'
   }
   {
