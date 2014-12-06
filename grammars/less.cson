@@ -56,10 +56,56 @@
     'match': '((\\.)[_a-zA-Z][a-zA-Z0-9_-]*)'
   }
   {
-    'begin': 'url\\('
-    'contentName': 'variable.parameter.url'
-    'end': '\\)'
-    'name': 'support.function.any-method.builtin.css'
+    'begin': '(format|local|url|attr|counter|counters)\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'support.function.misc.css'
+      '2':
+        'name': 'punctuation.section.function.css'
+    'end': '(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.function.css'
+    'patterns': [
+      {
+          'begin': '\''
+          'beginCaptures':
+            '0':
+              'name': 'punctuation.definition.string.begin.css'
+          'end': '\''
+          'endCaptures':
+            '0':
+              'name': 'punctuation.definition.string.end.css'
+          'name': 'string.quoted.single.css'
+          'patterns': [
+            {
+              'match': '\\\\.'
+              'name': 'constant.character.escape.css'
+            }
+          ]
+      }
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.css'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.css'
+        'name': 'string.quoted.double.css'
+        'patterns': [
+          {
+            'match': '\\\\(\\d{1,6}|.)'
+            'name': 'constant.character.escape.css'
+          }
+        ]
+      }
+      {
+        'match': '[^\'") \\t]+'
+        'name': 'variable.parameter.misc.css'
+      }
+    ]
   }
   {
     'match': '(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b(?!.*?\\{)'
