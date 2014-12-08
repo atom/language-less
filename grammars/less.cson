@@ -62,9 +62,9 @@
         'name': 'support.function.misc.css'
       '2':
         'name': 'punctuation.section.function.css'
-    'end': '(\\))'
+    'end': '\\)'
     'endCaptures':
-      '1':
+      '0':
         'name': 'punctuation.section.function.css'
     'patterns': [
       {
