@@ -37,26 +37,26 @@ describe "less grammar", ->
     {tokens} = grammar.tokenizeLine("left: left;")
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toEqual value: "left", scopes: ['source.css.less', 'support.type.property-name.css']
-    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'punctuation.separator.key-value.css']
-    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
-    expect(tokens[3]).toEqual value: "left", scopes: ['source.css.less', 'support.constant.property-value.css']
-    expect(tokens[4]).toEqual value: ";", scopes: ['source.css.less', 'punctuation.terminator.rule.css']
+    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-value.css']
+    expect(tokens[3]).toEqual value: "left", scopes: ['source.css.less', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(tokens[4]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-value.css', 'punctuation.terminator.rule.css']
 
     {tokens} = grammar.tokenizeLine("left:left;")
     expect(tokens).toHaveLength 4
     expect(tokens[0]).toEqual value: "left", scopes: ['source.css.less', 'support.type.property-name.css']
-    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'punctuation.separator.key-value.css']
-    expect(tokens[2]).toEqual value: "left", scopes: ['source.css.less', 'support.constant.property-value.css']
-    expect(tokens[3]).toEqual value: ";", scopes: ['source.css.less', 'punctuation.terminator.rule.css']
+    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[2]).toEqual value: "left", scopes: ['source.css.less', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(tokens[3]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-value.css', 'punctuation.terminator.rule.css']
 
   it "parses property names distinctly from element selectors with the same prefix", ->
     {tokens} = grammar.tokenizeLine("table-layout: fixed;")
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toEqual value: "table-layout", scopes: ['source.css.less', 'support.type.property-name.css']
-    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'punctuation.separator.key-value.css']
-    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
-    expect(tokens[3]).toEqual value: "fixed", scopes: ['source.css.less', 'support.constant.property-value.css']
-    expect(tokens[4]).toEqual value: ";", scopes: ['source.css.less', 'punctuation.terminator.rule.css']
+    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-value.css']
+    expect(tokens[3]).toEqual value: "fixed", scopes: ['source.css.less', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(tokens[4]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-value.css', 'punctuation.terminator.rule.css']
 
   it "parses id selectors", ->
     {tokens} = grammar.tokenizeLine("#abc {}")
@@ -68,3 +68,35 @@ describe "less grammar", ->
     expect(tokens).toHaveLength 5
     expect(tokens[0]).toEqual value: "#", scopes: ['source.css.less', 'meta.selector.css', 'entity.other.attribute-name.id', 'punctuation.definition.entity.css']
     expect(tokens[1]).toEqual value: "abc-123", scopes: ['source.css.less', 'meta.selector.css', 'entity.other.attribute-name.id']
+
+  it "parses property lists", ->
+    {tokens} = grammar.tokenizeLine(".foo { border: none; }")
+    expect(tokens).toHaveLength 12
+    expect(tokens[0]).toEqual value: ".", scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: "foo", scopes: ['source.css.less', 'entity.other.attribute-name.class.css']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
+    expect(tokens[3]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[5]).toEqual value: "border", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
+    expect(tokens[8]).toEqual value: "none", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(tokens[9]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.terminator.rule.css']
+    expect(tokens[10]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[11]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
+
+  it "parses variables", ->
+    {tokens} = grammar.tokenizeLine(".foo { border: @bar; }")
+    expect(tokens).toHaveLength 12
+    expect(tokens[0]).toEqual value: ".", scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: "foo", scopes: ['source.css.less', 'entity.other.attribute-name.class.css']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
+    expect(tokens[3]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[5]).toEqual value: "border", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
+    expect(tokens[8]).toEqual value: "@bar", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'variable.other.less']
+    expect(tokens[9]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.terminator.rule.css']
+    expect(tokens[10]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[11]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
