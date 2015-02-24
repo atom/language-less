@@ -314,6 +314,25 @@
     'name': 'meta.brace.curly.less'
   }
   {
+    'begin': '\\{'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.property-list.begin.css'
+    'captures':
+      '0':
+        'name': 'punctuation.section.property-list.css'
+    'end': '\\}'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.property-list.end.css'
+    'name': 'meta.property-list.css'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  }
+  {
     'match': '\\{|\\}'
     'name': 'meta.brace.curly.less'
   }
