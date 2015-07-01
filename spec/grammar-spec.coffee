@@ -79,7 +79,7 @@ describe "less grammar", ->
     expect(tokens).toHaveLength 6
     expect(tokens[0]).toEqual value: "&", scopes: ['source.css.less', 'entity.other.attribute-name.parent-selector.css', 'punctuation.definition.entity.css']
     expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
-    expect(tokens[2]).toEqual value: "hover", scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css']
+    expect(tokens[2]).toEqual value: "hover", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css']
     expect(tokens[3]).toEqual value: " ", scopes: ['source.css.less']
     expect(tokens[4]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
     expect(tokens[5]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
