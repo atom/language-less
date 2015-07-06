@@ -57,11 +57,11 @@
   }
   {
     'captures':
-      '1':
+      '0':
         'name': 'entity.other.attribute-name.parent-selector.css'
-      '2':
+      '1':
         'name': 'punctuation.definition.entity.css'
-    'match': '((&)[a-zA-Z0-9_-]*)'
+    'match': '(&)[a-zA-Z0-9_-]*'
   }
   {
     'begin': '(format|local|url|attr|counter|counters)\\s*(\\()'
