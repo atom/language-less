@@ -111,6 +111,12 @@ describe "less grammar", ->
     expect(tokens[10]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[11]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
 
+  it 'parses an incomplete property list', ->
+    {tokens} = grammar.tokenizeLine '.foo { border: none}'
+    expect(tokens[5]).toEqual value: 'border', scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[8]).toEqual value: 'none', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(tokens[9]).toEqual value: '}', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.section.property-list.end.css']
+
   it "parses variables", ->
     {tokens} = grammar.tokenizeLine(".foo { border: @bar; }")
     expect(tokens).toHaveLength 12
