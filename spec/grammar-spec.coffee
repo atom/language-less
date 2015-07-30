@@ -118,17 +118,17 @@ describe "less grammar", ->
     expect(tokens[9]).toEqual value: '}', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.section.property-list.end.css']
 
   it 'parses multiple lines of an incomplete property-list', ->
-      lines = grammar.tokenizeLines '''
-        very-custom { color: inherit }
-        another-one { display: none; }
-      '''
-      expect(lines[0][0]).toEqual value: 'very-custom', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
-      expect(lines[0][4]).toEqual value: 'color', scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
-      expect(lines[0][7]).toEqual value: 'inherit', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
-      expect(lines[0][9]).toEqual value: '}', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.section.property-list.end.css']
+    lines = grammar.tokenizeLines '''
+      very-custom { color: inherit }
+      another-one { display: none; }
+    '''
+    expect(lines[0][0]).toEqual value: 'very-custom', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
+    expect(lines[0][4]).toEqual value: 'color', scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(lines[0][7]).toEqual value: 'inherit', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(lines[0][9]).toEqual value: '}', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.section.property-list.end.css']
 
-      expect(lines[1][0]).toEqual value: 'another-one', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
-      expect(lines[1][10]).toEqual value: '}', scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
+    expect(lines[1][0]).toEqual value: 'another-one', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
+    expect(lines[1][10]).toEqual value: '}', scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
 
   it "parses variables", ->
     {tokens} = grammar.tokenizeLine(".foo { border: @bar; }")
