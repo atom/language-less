@@ -304,6 +304,21 @@
     'match': ':'
     'name': 'punctuation.separator.key-value.css'
   }
+  {
+    'include': '#font_name'
+  }
+  {
+    'include': '#color_name'
+  }
+  {
+    'include': '#less_builtin_function'
+  }
+  {
+    'include': '#css_builtin_function'
+  }
+  {
+    'include': '#gradient_builtin_function'
+  }
 ]
 'repository':
   'property_list':
@@ -328,21 +343,6 @@
       }
       {
         'include': '#property_value'
-      }
-      {
-        'include': '@font_name'
-      }
-      {
-        'include': '#color_name'
-      }
-      {
-        'include': '#less_builtin_function'
-      }
-      {
-        'include': '#css_builtin_function'
-      }
-      {
-        'include': '#gradient_builtin_function'
       }
       {
         'include': '$self'
@@ -380,6 +380,21 @@
         'name': 'support.constant.property-value.svg.css'
       }
       {
+        'include': '#font_name'
+      }
+      {
+        'include': '#color_name'
+      }
+      {
+        'include': '#less_builtin_function'
+      }
+      {
+        'include': '#css_builtin_function'
+      }
+      {
+        'include': '#gradient_builtin_function'
+      }
+      {
         'include': '$self'
       }
     ]
@@ -394,7 +409,7 @@
     'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|rgb|rgba|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b'
     'name': 'support.function.any-method.builtin.less'
   'css_builtin_function':
-    'match': '\\b(rgb|rgba|hsl|hsla|url|scale|scale[XY]|translate|translate[XY]|rect|rotate|skew|skew[XY]|cubic-bezier|translate3d|blur)\\b'
+    'match': '\\b(rgb|rgba|hsl|hsla|url|scale|scale[XY]|translate|translate[XYZ]|rect|rotate|skew|skew[XY]|cubic-bezier|translate3d|blur)\\b'
     'name': 'support.function.any-method.builtin.css'
   'gradient_builtin_function':
     'match': '\\b(color-stop|from|to)\\b'
