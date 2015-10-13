@@ -330,6 +330,9 @@
         'include': '#property_value'
       }
       {
+        'include': '@font_name'
+      }
+      {
         'include': '#color_name'
       }
       {
@@ -377,17 +380,12 @@
         'name': 'support.constant.property-value.svg.css'
       }
       {
-        'match': '(\\b(arial|century|comic|courier|futura|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\\b)'
-        'name': 'support.constant.property-value.font-name.css'
-      }
-      {
-        'match': '(,)'
-        'name': 'punctuation.separator.value-list.css'
-      }
-      {
         'include': '$self'
       }
     ]
+  'font_name':
+    'match': '(\\b(?i:arial|century|comic|courier|futura|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\\b)'
+    'name': 'support.constant.font-name.css'
   'color_name':
     'comment': 'http://www.w3.org/TR/CSS21/syndata.html#value-def-color'
     'match': '\\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\\b'
