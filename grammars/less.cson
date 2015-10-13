@@ -185,11 +185,32 @@
   {
     'captures':
       '1':
-        'name': 'keyword.control.at-rule.import.css'
+        'name': 'keyword.control.at-rule.import.less'
       '2':
-        'name': 'punctuation.definition.keyword.css'
+        'name': 'punctuation.definition.keyword.less'
     'match': '^\\s*((@)import\\b)'
     'name': 'meta.at-rule.import.css'
+  }
+  {
+    'begin': '\\\('
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.import.options.begin.less'
+    'end': '\\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.import.options.begin.less'
+    'name': 'keyword.control.import.options.less'
+    'patterns': [
+      {
+        'match': '\\b(reference|inline|less|once|multiple|optional)\\b'
+        'name': 'keyword.control.import.option.less'
+      }
+      {
+        'match': ','
+        'name': 'punctuation.separator.list.less'
+      }
+    ]
   }
   {
     'captures':
