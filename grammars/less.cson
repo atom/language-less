@@ -192,27 +192,6 @@
     'name': 'meta.at-rule.import.css'
   }
   {
-    'begin': '\\\('
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.import.options.begin.less'
-    'end': '\\\)'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.import.options.begin.less'
-    'name': 'keyword.control.import.options.less'
-    'patterns': [
-      {
-        'match': '\\b(reference|inline|less|once|multiple|optional)\\b'
-        'name': 'keyword.control.import.option.less'
-      }
-      {
-        'match': ','
-        'name': 'punctuation.separator.list.less'
-      }
-    ]
-  }
-  {
     'captures':
       '1':
         'name': 'keyword.control.at-rule.fontface.css'
@@ -324,6 +303,10 @@
   {
     'match': ':'
     'name': 'punctuation.separator.key-value.css'
+  }
+  {
+    'match': '(?<=\\\(|,|\\s)\\b(reference|inline|less|once|multiple|optional)\\b(?=\\\)|,)'
+    'name': 'keyword.control.import.option.less'
   }
   {
     'include': '#font_name'
