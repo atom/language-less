@@ -376,6 +376,10 @@
         'name': 'support.constant.property-value.css'
       }
       {
+        'match': '\\b(start|sRGB|square|round|optimizeSpeed|optimizeQuality|nonzero|miter|middle|linearRGB|geometricPrecision |evenodd |end |crispEdges|butt|bevel)\\b'
+        'name': 'support.constant.property-value.svg.css'
+      }
+      {
         'include': '$self'
       }
     ]
