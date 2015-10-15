@@ -363,7 +363,7 @@
         'name': 'support.type.property-name.svg.css'
     'match': '(?<![-a-z])(writing-mode|text-rendering|text-anchor|stroke-width|stroke-opacity|stroke-miterlimit|stroke-linejoin|stroke-linecap|stroke-dashoffset|stroke-dasharray|stroke|stop-opacity|stop-color|shape-rendering|marker-start|marker-mid|marker-end|lighting-color	|kerning|image-rendering|glyph-orientation-vertical|glyph-orientation-horizontal|flood-opacity|flood-color|fill-rule|fill-opacity|fill|enable-background|color-rendering|color-interpolation-filters|color-interpolation|clip-rule|clip-path)(?=\\s*:)'
   'property_value':
-    'begin': '(?<!&)(:)\\s*(?!(\\s*{))'
+    'begin': '(?<!&)(:)\\s*(?!(\\s*{))(?=.*;)'
     'beginCaptures':
       '1':
         'name': 'punctuation.separator.key-value.css'
