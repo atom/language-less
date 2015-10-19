@@ -217,9 +217,9 @@
     'match': '\\b(all|aural|braille|embossed|handheld|print|projection|screen|tty|tv)\\b'
     'name': 'support.constant.media.css'
   }
-  {
-    'include': '#property_list'
-  }
+  # {
+  #   'include': '#property_list'
+  # }
   {
     'captures':
       '1':
@@ -254,6 +254,35 @@
     "match": "@{[a-zA-Z0-9_-]+}",
     "name": "variable.other.interpolation.less"
   }
+  (
+    'begin': '\\{'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.property-list.begin.css'
+    'end': '\\}'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.property-list.end.css'
+    'name': 'meta.property-list.css'
+    'patterns': [
+      {
+        'match': '@\{[^\}]+\}'
+        'name': 'variable.other.interpolation.less'
+      }
+      {
+        'include': '#property_name'
+      }
+      {
+        'include': '#property_name_svg'
+      }
+      {
+        'include': '#property_value'
+      }
+      {
+        'include': '$self'
+      }
+    ]
+  )
   {
     "match": "\\!\\s*important",
     "name": "keyword.other.important.css"
@@ -329,33 +358,33 @@
   }
 ]
 'repository':
-  'property_list':
-    'begin': '\\{'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.section.property-list.begin.css'
-    'captures':
-      '0':
-        'name': 'punctuation.section.property-list.css'
-    'end': '(\\})|(?<=\\})'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.section.property-list.end.css'
-    'name': 'meta.property-list.css'
-    'patterns': [
-      {
-        'include': '#property_name'
-      }
-      {
-        'include': '#property_name_svg'
-      }
-      {
-        'include': '#property_value'
-      }
-      {
-        'include': '$self'
-      }
-    ]
+  # 'property_list':
+  #   'begin': '\\{'
+  #   'beginCaptures':
+  #     '0':
+  #       'name': 'punctuation.section.property-list.begin.css'
+  #   'captures':
+  #     '0':
+  #       'name': 'punctuation.section.property-list.css'
+  #   'end': '(\\})|(?<=\\})'
+  #   'endCaptures':
+  #     '0':
+  #       'name': 'punctuation.section.property-list.end.css'
+  #   'name': 'meta.property-list.css'
+  #   'patterns': [
+  #     {
+  #       'include': '#property_name'
+  #     }
+  #     {
+  #       'include': '#property_name_svg'
+  #     }
+  #     {
+  #       'include': '#property_value'
+  #     }
+  #     {
+  #       'include': '$self'
+  #     }
+  #   ]
   'property_name':
     'captures':
       '1':
