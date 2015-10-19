@@ -146,12 +146,27 @@ describe "less grammar", ->
     expect(tokens[10]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[11]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
 
-  it 'parses variable interpolation', ->
-    {tokens} = grammar.tokenizeLine '.@{selector} { @{property}: #0ee; }'
+  it 'parses variable interpolation in selectors', ->
+    {tokens} = grammar.tokenizeLine '.@{selector} { color: #0ee; }'
     expect(tokens[1]).toEqual value: '@{selector}', scopes: ['source.css.less', 'variable.other.interpolation.less']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
+    expect(tokens[3]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+
+  it 'parses variable interpolation in properties', ->
+    {tokens} = grammar.tokenizeLine '.foo { @{property}: #0ee; }'
+    expect(tokens[0]).toEqual value: ".", scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: "foo", scopes: ['source.css.less', 'entity.other.attribute-name.class.css']
     expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
     expect(tokens[3]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
     expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[5]).toEqual value: '@{property}', scopes: ['source.css.less', 'meta.property-list.css', 'variable.other.interpolation.less']
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
     expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
+
+  #TODO
+  # it 'parses variable interpolation in imports', ->
+  #   {tokens} = grammar.tokenizeLine '@import "@{themes}/tidal-wave.less";'
+  #TODO
+  # it 'parses variable interpolation in urls', ->
+  #   {tokens} = grammar.tokenizeLine '.foo { background: url("@{images}/white-sand.png"); }";'
