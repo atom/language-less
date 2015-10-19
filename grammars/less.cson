@@ -251,6 +251,10 @@
     'name': 'variable.other.less'
   }
   {
+    "match": "@{[a-zA-Z0-9_-]+}",
+    "name": "variable.other.interpolation.less"
+  }
+  {
     "match": "\\!\\s*important",
     "name": "keyword.other.important.css"
   }
