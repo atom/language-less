@@ -154,4 +154,4 @@ describe "less grammar", ->
     expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[5]).toEqual value: '@{property}', scopes: ['source.css.less', 'meta.property-list.css', 'variable.other.interpolation.less']
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
-    # expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
