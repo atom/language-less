@@ -95,6 +95,24 @@ describe "less grammar", ->
     expect(tokens[0]).toEqual value: "#", scopes: ['source.css.less', 'meta.selector.css', 'entity.other.attribute-name.id', 'punctuation.definition.entity.css']
     expect(tokens[1]).toEqual value: "abc-123", scopes: ['source.css.less', 'meta.selector.css', 'entity.other.attribute-name.id']
 
+  it "parses pseudo classes", ->
+    {tokens} = grammar.tokenizeLine(".foo:hover { span:last-of-type { font-weight: bold; } }")
+    expect(tokens[0]).toEqual value: ".", scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: "foo", scopes: ['source.css.less', 'entity.other.attribute-name.class.css']
+    expect(tokens[2]).toEqual value: ":", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
+    expect(tokens[3]).toEqual value: "hover", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css' ]
+    expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less']
+    expect(tokens[5]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(tokens[6]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[7]).toEqual value: "span", scopes: ['source.css.less', 'meta.property-list.css', 'keyword.control.html.elements']
+    expect(tokens[8]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
+    expect(tokens[9]).toEqual value: "last-of-type", scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css']
+    expect(tokens[10]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[11]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(tokens[12]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css']
+    expect(tokens[13]).toEqual value: "font-weight", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[14]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+
   it "parses property lists", ->
     {tokens} = grammar.tokenizeLine(".foo { border: none; }")
     expect(tokens).toHaveLength 12
@@ -176,6 +194,7 @@ describe "less grammar", ->
     expect(tokens[1]).toEqual value: "import", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less']
     expect(tokens[4]).toEqual value: "optional", scopes: ['source.css.less', 'keyword.control.import.option.less']
     expect(tokens[6]).toEqual value: "reference", scopes: ['source.css.less', 'keyword.control.import.option.less']
+    expect(tokens[10]).toEqual value: "theme", scopes: ['source.css.less', 'string.quoted.double.css']
 
   #TODO
   # it 'parses variable interpolation in imports', ->
