@@ -111,6 +111,12 @@ describe "less grammar", ->
     expect(tokens[10]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[11]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
 
+  it 'parses font lists', ->
+    {tokens} = grammar.tokenizeLine '.foo { font-family: "Some Font Name", serif; }'
+    expect(tokens[5]).toEqual value: 'font-family', scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[9]).toEqual value: 'Some Font Name', scopes: ['source.css.less', 'meta.property-list.css', 'string.quoted.double.css']
+    expect(tokens[12]).toEqual value: 'serif', scopes: ['source.css.less', 'meta.property-list.css', 'support.constant.font-name.css']
+
   it 'parses an incomplete property list', ->
     {tokens} = grammar.tokenizeLine '.foo { border: none}'
     expect(tokens[5]).toEqual value: 'border', scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
@@ -163,6 +169,13 @@ describe "less grammar", ->
     expect(tokens[5]).toEqual value: '@{property}', scopes: ['source.css.less', 'meta.property-list.css', 'variable.other.interpolation.less']
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
     expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
+
+  it 'parses options in import statements', ->
+    {tokens} = grammar.tokenizeLine '@import (optional, reference) "theme";'
+    expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less', 'punctuation.definition.keyword.less']
+    expect(tokens[1]).toEqual value: "import", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less']
+    expect(tokens[4]).toEqual value: "optional", scopes: ['source.css.less', 'keyword.control.import.option.less']
+    expect(tokens[6]).toEqual value: "reference", scopes: ['source.css.less', 'keyword.control.import.option.less']
 
   #TODO
   # it 'parses variable interpolation in imports', ->
