@@ -366,11 +366,11 @@
         'name': 'support.type.property-name.svg.css'
     'match': '(?<![-a-z])(writing-mode|text-anchor|stroke-width|stroke-opacity|stroke-miterlimit|stroke-linejoin|stroke-linecap|stroke-dashoffset|stroke-dasharray|stroke|stop-opacity|stop-color|shape-rendering|marker-start|marker-mid|marker-end|lighting-color	|kerning|image-rendering|glyph-orientation-vertical|glyph-orientation-horizontal|flood-opacity|flood-color|fill-rule|fill-opacity|fill|enable-background|color-rendering|color-interpolation-filters|color-interpolation|clip-rule|clip-path)(?=\\s*:)'
   'property_value':
-    'begin': '(?<!&)(:)\\s*(?!(\\s*{))(?!.*(,|(?<!@){))'
+    'begin': '(?<!&)(:)\\s*(?!(\\s*{))(?!.*(?<!@){)'
     'beginCaptures':
       '1':
         'name': 'punctuation.separator.key-value.css'
-    'end': '\\s*(;)|(?=\\})'
+    'end': '\\s*(;)|(?=})'
     'endCaptures':
       '1':
         'name': 'punctuation.terminator.rule.css'
@@ -411,7 +411,7 @@
     'match': '\\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\\b'
     'name': 'support.constant.color.w3c-standard-color-name.css'
   'less_builtin_function':
-    'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|rgb|rgba|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b'
+    'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b'
     'name': 'support.function.any-method.builtin.less'
   'css_builtin_function':
     'match': '\\b(drop-shadow|repeating-radial-gradient|repeating-linear-gradient|linear-gradient|radial-gradient|scaleY|scaleX|scaleZ|scale3d|scale|translateX|translateY|translateZ|translate3d|translate|rgb|rgba|hsl|hsla|url|scale|scale[XY]|translate|translate[XYZ]|rect|rotate|skew|skew[XY]|cubic-bezier|translate3d|blur)\\b'

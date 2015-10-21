@@ -132,8 +132,8 @@ describe "less grammar", ->
   it 'parses font lists', ->
     {tokens} = grammar.tokenizeLine '.foo { font-family: "Some Font Name", serif; }'
     expect(tokens[5]).toEqual value: 'font-family', scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
-    expect(tokens[9]).toEqual value: 'Some Font Name', scopes: ['source.css.less', 'meta.property-list.css', 'string.quoted.double.css']
-    expect(tokens[12]).toEqual value: 'serif', scopes: ['source.css.less', 'meta.property-list.css', 'support.constant.font-name.css']
+    expect(tokens[9]).toEqual value: 'Some Font Name', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css']
+    expect(tokens[12]).toEqual value: 'serif', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.font-name.css']
 
   it 'parses an incomplete property list', ->
     {tokens} = grammar.tokenizeLine '.foo { border: none}'
@@ -195,6 +195,23 @@ describe "less grammar", ->
     expect(tokens[4]).toEqual value: "optional", scopes: ['source.css.less', 'keyword.control.import.option.less']
     expect(tokens[6]).toEqual value: "reference", scopes: ['source.css.less', 'keyword.control.import.option.less']
     expect(tokens[10]).toEqual value: "theme", scopes: ['source.css.less', 'string.quoted.double.css']
+
+  it 'parses built-in functions in property values', ->
+    {tokens} = grammar.tokenizeLine '.foo { border: 1px solid rgba(0,0,0); }'
+    expect(tokens[0]).toEqual value: ".", scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: "foo", scopes: ['source.css.less', 'entity.other.attribute-name.class.css']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
+    expect(tokens[3]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[5]).toEqual value: "border", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[8]).toEqual value: "1", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
+    expect(tokens[9]).toEqual value: "px", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'keyword.other.unit.css']
+    expect(tokens[11]).toEqual value: "solid", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(tokens[13]).toEqual value: "rgba", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.css']
+    expect(tokens[14]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.brace.round.less']
+    expect(tokens[15]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
+    expect(tokens[21]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.terminator.rule.css']
 
   #TODO
   # it 'parses variable interpolation in imports', ->
