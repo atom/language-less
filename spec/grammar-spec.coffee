@@ -213,6 +213,26 @@ describe "less grammar", ->
     expect(tokens[15]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
     expect(tokens[21]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.terminator.rule.css']
 
+  it 'parses nested multiple lines with pseudo-classes', ->
+    lines = grammar.tokenizeLines '''
+      a { p:hover,
+      p:active { color: blue; } }
+    '''
+    expect(lines[0][0]).toEqual value: 'a', scopes: ['source.css.less', 'keyword.control.html.elements']
+    expect(lines[0][1]).toEqual value: ' ', scopes: ['source.css.less']
+    expect(lines[0][2]).toEqual value: '{', scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(lines[0][3]).toEqual value: ' ', scopes: ['source.css.less', 'meta.property-list.css']
+    expect(lines[0][4]).toEqual value: 'p', scopes: ['source.css.less', 'meta.property-list.css', 'keyword.control.html.elements' ]
+    expect(lines[0][5]).toEqual value: ':', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
+    expect(lines[0][6]).toEqual value: 'hover', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css']
+    expect(lines[0][7]).toEqual value: ',', scopes: ['source.css.less', 'meta.property-list.css']
+    expect(lines[1][0]).toEqual value: 'p', scopes: ['source.css.less', 'meta.property-list.css', 'keyword.control.html.elements' ]
+    expect(lines[1][1]).toEqual value: ':', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
+    expect(lines[1][2]).toEqual value: 'active', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css']
+    expect(lines[1][3]).toEqual value: ' ', scopes: ['source.css.less', 'meta.property-list.css']
+    expect(lines[1][4]).toEqual value: '{', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(lines[1][5]).toEqual value: ' ', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css']
+
   #TODO
   # it 'parses variable interpolation in imports', ->
   #   {tokens} = grammar.tokenizeLine '@import "@{themes}/tidal-wave.less";'

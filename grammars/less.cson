@@ -150,20 +150,6 @@
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.entity.css'
-    'match': '(:+)(after|before|first-letter|first-line|selection)'
-    'name': 'entity.other.attribute-name.pseudo-element.css'
-  }
-  {
-    'captures':
-      '1':
-        'name': 'punctuation.definition.entity.css'
-    'match': '(:+)(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|shadow|target|valid|visited)(?!\\s*;)'
-    'name': 'entity.other.attribute-name.pseudo-class.css'
-  }
-  {
-    'captures':
-      '1':
         'name': 'punctuation.definition.begin.entity.css'
       '2':
         'name': 'entity.other.attribute-name.attribute.css'
@@ -263,6 +249,12 @@
     'name': 'meta.property-list.css'
     'patterns': [
       {
+        'include': '#pseudo_elements'
+      }
+      {
+        'include': '#pseudo_classes'
+      }
+      {
         'match': '@\{[^\}]+\}'
         'name': 'variable.other.interpolation.less'
       }
@@ -303,6 +295,12 @@
   {
     'match': '(?<!:)\\b([a-zA-Z0-9]+(-[a-zA-Z0-9]+)+)(?=\\.|\\s++[^:]|\\s*[,{]|:+(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child()|nth-last-child()|nth-of-type()|nth-last-of-type()|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid|shadow)(\\([0-9A-Za-z]*\\))?)'
     'name': 'keyword.control.html.custom.elements'
+  }
+  {
+    'include': '#pseudo_elements'
+  }
+  {
+    'include': '#pseudo_classes'
   }
   {
     'captures':
@@ -403,6 +401,18 @@
         'include': '$self'
       }
     ]
+  'pseudo_elements':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.entity.css'
+    'match': '(:|::)(after|before|first-letter|first-line|selection)'
+    'name': 'entity.other.attribute-name.pseudo-element.css'
+  'pseudo_classes':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.entity.css'
+    'match': '(:)(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|shadow|target|valid|visited)(?!\\s*;)'
+    'name': 'entity.other.attribute-name.pseudo-class.css'
   'font_name':
     'match': '(\\b(?i:arial|century|comic|courier|futura|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\\b)'
     'name': 'support.constant.font-name.css'
