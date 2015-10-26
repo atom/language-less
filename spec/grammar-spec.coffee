@@ -213,6 +213,14 @@ describe "less grammar", ->
     expect(tokens[15]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
     expect(tokens[21]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.terminator.rule.css']
 
+  it 'parses linear-gradient', ->
+    {tokens} = grammar.tokenizeLine '.foo { background: linear-gradient(white, black); }'
+    expect(tokens[5]).toEqual value: "background", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
+    expect(tokens[8]).toEqual value: "linear-gradient", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.css']
+    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.brace.round.less']
+
   it 'parses nested multiple lines with pseudo-classes', ->
     lines = grammar.tokenizeLines '''
       a { p:hover,
