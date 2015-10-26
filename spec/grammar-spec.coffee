@@ -239,3 +239,6 @@ describe "less grammar", ->
   #TODO
   # it 'parses variable interpolation in urls', ->
   #   {tokens} = grammar.tokenizeLine '.foo { background: url("@{images}/white-sand.png"); }";'
+  #TODO
+  # it 'parses non-quoted urls' ->
+  #   {tokens} = grammar.tokenizeLine '.foo { background: #f00ba7 url(http://placehold.alpha-centauri/42.png) no-repeat; }";'
