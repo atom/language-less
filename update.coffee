@@ -24,7 +24,7 @@ functionsPromise.then (results) ->
     for func in functions
       suggestions.push
         type: 'function'
-        rightLabel: 'LESS Builtin'
+        rightLabel: 'Less Builtin'
         snippet: sanitizeFunc(func.example)
         description: func.description
         descriptionMoreURL: "http://lesscss.org/functions/##{functionType}-#{func.name}"
