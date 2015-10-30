@@ -221,6 +221,14 @@ describe "less grammar", ->
     expect(tokens[8]).toEqual value: "linear-gradient", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.css']
     expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.brace.round.less']
 
+  it 'parses blend modes', ->
+    {tokens} = grammar.tokenizeLine '.foo { background-blend-mode: color-dodge; }'
+    expect(tokens[5]).toEqual value: "background-blend-mode", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
+    expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.key-value.css']
+    expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
+    expect(tokens[8]).toEqual value: "color-dodge", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
+    expect(tokens[9]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.terminator.rule.css']
+
   it 'parses nested multiple lines with pseudo-classes', ->
     lines = grammar.tokenizeLines '''
       a { p:hover,
