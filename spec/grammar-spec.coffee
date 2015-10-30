@@ -26,6 +26,11 @@ describe "less grammar", ->
     expect(tokens).toHaveLength 1
     expect(tokens[0]).toEqual value: ".4", scopes: ['source.css.less', 'constant.numeric.css']
 
+  it 'parses color names', ->
+    {tokens} = grammar.tokenizeLine '.foo { color: rebeccapurple; background: whitesmoke; }'
+    expect(tokens[8]).toEqual value: "rebeccapurple", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.color.w3c-standard-color-name.css']
+    expect(tokens[14]).toEqual value: "whitesmoke", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.color.w3c-standard-color-name.css']
+
   it "parses property names", ->
     {tokens} = grammar.tokenizeLine("{display: none;}")
     expect(tokens[1]).toEqual value: "display", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
