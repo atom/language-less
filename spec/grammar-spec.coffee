@@ -69,6 +69,10 @@ describe "less grammar", ->
     expect(tokens[7].scopes).not.toContain 'meta.property-value.css'
     expect(tokens[11].scopes).not.toContain 'meta.property-value.css'
 
+  it "parses @media features", ->
+    {tokens} = grammar.tokenizeLine('@media (min-width: 100px) {}')
+    expect(tokens[4]).toEqual value: "min-width", scopes: ['source.css.less', 'support.type.property-name.media-feature.media.css']
+
   it "parses parent selector", ->
     {tokens} = grammar.tokenizeLine('& .foo {}')
     expect(tokens).toHaveLength 7

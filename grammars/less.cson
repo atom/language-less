@@ -196,12 +196,12 @@
     'name': 'meta.at-rule.media.css'
   }
   {
-    'match': '\\b(min-device-aspect-ratio|max-device-aspect-ratio|device-aspect-ratio|min-aspect-ratio|max-aspect-ratio|aspect-ratio|min-device-height|max-device-height|device-height|min-device-width|max-device-width|device-width|min-monochrome|max-monochrome|monochrome|min-color-index|max-color-index|color-index|min-color|max-color|color|orientation|scan|min-resolution|max-resolution|resolution|grid)\\b'
-    'name': 'support.type.property-name.media.css'
+    'match': '\\b(width|scan|resolution|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio)\\b'
+    'name': 'support.type.property-name.media-feature.media.css'
   }
   {
-    'match': '\\b(all|aural|braille|embossed|handheld|print|projection|screen|tty|tv)\\b'
-    'name': 'support.constant.media.css'
+    'match': '\\b(tv|tty|screen|projection|print|handheld|embossed|braille|aural|all)\\b'
+    'name': 'support.constant.media-type.media.css'
   }
   {
     'captures':
