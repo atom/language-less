@@ -72,6 +72,13 @@ describe "less grammar", ->
   it "parses @media features", ->
     {tokens} = grammar.tokenizeLine('@media (min-width: 100px) {}')
     expect(tokens[4]).toEqual value: "min-width", scopes: ['source.css.less', 'support.type.property-name.media-feature.media.css']
+    expect(tokens[7]).toEqual value: "100", scopes: ['source.css.less', 'constant.numeric.css']
+    expect(tokens[8]).toEqual value: "px", scopes: ['source.css.less', 'keyword.other.unit.css']
+
+  it "parses @media orientation", ->
+    {tokens} = grammar.tokenizeLine('@media (orientation: portrait){}')
+    expect(tokens[4]).toEqual value: "orientation", scopes: ['source.css.less', 'support.type.property-name.media-feature.media.css']
+    expect(tokens[7]).toEqual value: "portrait", scopes: ['source.css.less', 'support.constant.property-value.media-property.media.css']
 
   it "parses parent selector", ->
     {tokens} = grammar.tokenizeLine('& .foo {}')
