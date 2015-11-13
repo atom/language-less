@@ -201,9 +201,9 @@ describe "less grammar", ->
     {tokens} = grammar.tokenizeLine '@import (optional, reference) "theme";'
     expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less', 'punctuation.definition.keyword.less']
     expect(tokens[1]).toEqual value: "import", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less']
-    expect(tokens[4]).toEqual value: "optional", scopes: ['source.css.less', 'keyword.control.import.option.less']
-    expect(tokens[6]).toEqual value: "reference", scopes: ['source.css.less', 'keyword.control.import.option.less']
-    expect(tokens[10]).toEqual value: "theme", scopes: ['source.css.less', 'string.quoted.double.css']
+    expect(tokens[4]).toEqual value: "optional", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.import.option.less']
+    expect(tokens[7]).toEqual value: "reference", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.import.option.less']
+    expect(tokens[11]).toEqual value: "theme", scopes: ['source.css.less', 'meta.at-rule.import.css', 'string.quoted.double.css']
 
   it 'parses built-in functions in property values', ->
     {tokens} = grammar.tokenizeLine '.foo { border: 1px solid rgba(0,0,0); }'
@@ -266,15 +266,23 @@ describe "less grammar", ->
     expect(lines[1][4]).toEqual value: '{', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
     expect(lines[1][5]).toEqual value: ' ', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-list.css']
 
-  #TODO
-  # it 'parses variable interpolation in imports', ->
-  #   {tokens} = grammar.tokenizeLine '@import "@{themes}/tidal-wave.less";'
-  #TODO
-  # it 'parses variable interpolation in urls', ->
-  #   {tokens} = grammar.tokenizeLine '.foo { background: url("@{images}/white-sand.png"); }";'
+  it 'parses variable interpolation in imports', ->
+    {tokens} = grammar.tokenizeLine '@import "@{var}/tidal-wave.less";'
+    expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less','punctuation.definition.keyword.less']
+    expect(tokens[1]).toEqual value: "import", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less', 'meta.at-rule.import.css']
+    expect(tokens[3]).toEqual value: "\"", scopes: ['source.css.less', 'meta.at-rule.import.css', 'string.quoted.double.css', 'punctuation.definition.string.begin.css']
+    expect(tokens[4]).toEqual value: "@{var}", scopes: ['source.css.less', 'meta.at-rule.import.css', 'string.quoted.double.css', 'variable.other.interpolation.less']
+
+  it 'parses variable interpolation in urls', ->
+    {tokens} = grammar.tokenizeLine '.foo { background: url("@{var}/img.png"); }";'
+    expect(tokens[8]).toEqual value: "url", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css']
+    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
+    expect(tokens[11]).toEqual value: "@{var}", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.quoted.double.css', 'variable.other.interpolation.less']
+    expect(tokens[12]).toEqual value: "/img.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.quoted.double.css']
 
   it 'parses non-quoted urls', ->
     {tokens} = grammar.tokenizeLine '.foo { background: url(http://%20/2.png) }'
     expect(tokens[8]).toEqual value: "url", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css']
     expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
-    expect(tokens[10]).toEqual value: "http://%20/2.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.unquoted.url.css']
+    expect(tokens[10]).toEqual value: "http://%20/2.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.url.css']
