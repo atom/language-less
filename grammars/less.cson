@@ -310,15 +310,15 @@
         'name': 'punctuation.section.property-list.end.css'
     'comment': 'Match empty braces to give proper ↩ action'
     'match': '(\\{)(\\})'
-    'name': 'meta.brace.curly.less'
+    'name': 'meta.brace.curly.css'
   }
   {
     'match': '\\{|\\}'
-    'name': 'meta.brace.curly.less'
+    'name': 'meta.brace.curly.css'
   }
   {
     'match': '\\(|\\)'
-    'name': 'meta.brace.round.less'
+    'name': 'meta.brace.round.css'
   }
   {
     'match': '\\[|\\]'
@@ -381,6 +381,21 @@
       {
         'match': '\\b(start|sRGB|square|round|optimizeSpeed|optimizeQuality|nonzero|miter|middle|linearRGB|geometricPrecision |evenodd |end |crispEdges|butt|bevel)\\b'
         'name': 'support.constant.property-value.svg.css'
+      }
+      {
+        'begin': 'url(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'meta.brace.round.css'
+        'end': '\\)'
+        'endCaptures':
+          '0':
+            'name': 'meta.brace.round.css'
+        'name': 'support.function.any-method.builtin.url.css'
+        'patterns': [
+          'match': '\\b.*\\b'
+          'name': 'string.unquoted.url.css'
+        ]
       }
       {
         'include': '#font_name'
