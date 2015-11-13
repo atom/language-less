@@ -491,7 +491,7 @@
     'captures':
       '1':
         'name': 'punctuation.definition.entity.css'
-    'match': '(:)(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|shadow|target|valid|visited)(?!\\s*;)'
+    'match': '(:)(active|checked|default|dir|disabled|empty|enabled|extend|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|shadow|target|valid|visited)(?!\\s*;)'
     'name': 'entity.other.attribute-name.pseudo-class.css'
   'font_name':
     'match': '(\\b(?i:arial|century|comic|courier|cursive|fantasy|futura|garamond|georgia|helvetica|impact|lucida|monospace|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif)\\b)'
