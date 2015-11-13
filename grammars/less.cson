@@ -141,13 +141,35 @@
     'name': 'meta.attribute-selector.css'
   }
   {
-    'captures':
+    'begin': '^\\s*((@)import\\b)'
+    'beginCaptures':
       '1':
         'name': 'keyword.control.at-rule.import.less'
       '2':
         'name': 'punctuation.definition.keyword.less'
-    'match': '^\\s*((@)import\\b)'
+    'end': ';'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.terminator.rule.css'
     'name': 'meta.at-rule.import.css'
+    'patterns': [
+      {
+        'match': '(?<=\\\(|,|\\s)\\b(reference|inline|less|once|multiple|optional)\\b(?=\\\)|,)'
+        'name': 'keyword.control.import.option.less'
+      }
+      {
+        'include': '#brace_round'
+      }
+      {
+        'include': '#comma'
+      }
+      {
+        'include': '#string_double'
+      }
+      {
+        'include': '#string_single'
+      }
+    ]
   }
   {
     'captures':
@@ -302,10 +324,6 @@
     'name': 'punctuation.separator.key-value.css'
   }
   {
-    'match': '(?<=\\\(|,|\\s)\\b(reference|inline|less|once|multiple|optional)\\b(?=\\\)|,)'
-    'name': 'keyword.control.import.option.less'
-  }
-  {
     'include': '#font_name'
   }
   {
@@ -409,8 +427,16 @@
             'name': 'meta.brace.round.css'
         'name': 'support.function.any-method.builtin.url.css'
         'patterns': [
-          'match': '\\b.*\\b'
-          'name': 'string.unquoted.url.css'
+          {
+            'include': '#string_double'
+          }
+          {
+            'include': '#string_single'
+          }
+          {
+            'match': '(\\b|/).*\\b'
+            'name': 'string.url.css'
+          }
         ]
       }
       {
