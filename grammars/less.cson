@@ -206,8 +206,7 @@
     'name': 'variable.other.less'
   }
   {
-    "match": "@{[a-zA-Z0-9_-]+}",
-    "name": "variable.other.interpolation.less"
+    'include': '#variable_interpolation'
   }
   (
     'begin': '\\{'
@@ -227,8 +226,7 @@
         'include': '#pseudo_classes'
       }
       {
-        'match': '@\{[^\}]+\}'
-        'name': 'variable.other.interpolation.less'
+        'include': '#variable_interpolation'
       }
       {
         'include': '#property_name'
@@ -325,6 +323,9 @@
   }
 ]
 'repository':
+  'variable_interpolation':
+    'match': '@{[a-zA-Z0-9_-]+}'
+    'name': 'variable.other.interpolation.less'
   'string_double':
     'begin': '"'
     'beginCaptures':
