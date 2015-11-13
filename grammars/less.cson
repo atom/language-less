@@ -8,38 +8,10 @@
 'foldingStopMarker': '(?<!\\*)\\*\\*/|^\\s*\\}'
 'patterns': [
   {
-    'begin': '"'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.css'
-    'end': '"'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.css'
-    'name': 'string.quoted.double.css'
-    'patterns': [
-      {
-        'match': '\\\\(\\d{1,6}|.)'
-        'name': 'constant.character.escaped.css'
-      }
-    ]
+    'include': '#string_double'
   }
   {
-    'begin': '\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.css'
-    'end': '\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.css'
-    'name': 'string.quoted.single.css'
-    'patterns': [
-      {
-        'match': '\\\\.'
-        'name': 'constant.character.escaped.css'
-      }
-    ]
+    'include': '#string_single'
   }
   {
     'captures':
@@ -353,6 +325,44 @@
   }
 ]
 'repository':
+  'string_double':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.css'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.css'
+    'name': 'string.quoted.double.css'
+    'patterns': [
+      {
+        'match': '\\\\(\\d{1,6}|.)'
+        'name': 'constant.character.escaped.css'
+      }
+      {
+        'include': '#variable_interpolation'
+      }
+    ]
+  'string_single':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.css'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.css'
+    'name': 'string.quoted.single.css'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escaped.css'
+      }
+      {
+        'include': '#variable_interpolation'
+      }
+    ]
   'property_name':
     'captures':
       '1':
