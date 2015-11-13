@@ -297,3 +297,10 @@ describe "less grammar", ->
   it 'parses the "true" value', ->
     {tokens} = grammar.tokenizeLine '@var: true;'
     expect(tokens[3]).toEqual value: "true", scopes: ['source.css.less', 'constant.language.boolean.less']
+
+  it 'parses mixin guards', ->
+    {tokens} = grammar.tokenizeLine '.mixin when (isnumber(@b)) and (default()), (ispixel(@a)) { }'
+    expect(tokens[4]).toEqual value: "isnumber", scopes: ['source.css.less', 'support.function.type-checking.less']
+    expect(tokens[11]).toEqual value: "default", scopes: ['source.css.less', 'support.function.default.less']
+    expect(tokens[15]).toEqual value: ",", scopes: ['source.css.less', 'punctuation.separator.list.css']
+    expect(tokens[18]).toEqual value: "ispixel", scopes: ['source.css.less', 'support.function.unit-checking.less']

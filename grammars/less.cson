@@ -332,6 +332,18 @@
     'name': 'constant.language.boolean.less'
   }
   {
+    'match': '\\bdefault\\b'
+    'name': 'support.function.default.less'
+  }
+  {
+    'match': '\\b(iscolor|isnumber|isstring|iskeyword|isurl)\\b'
+    'name': 'support.function.type-checking.less'
+  }
+  {
+    'match': '\\b(ispixel|ispercentage|isem|isunit)\\b'
+    'name': 'support.function.unit-checking.less'
+  }
+  {
     'include': '#font_name'
   }
   {
