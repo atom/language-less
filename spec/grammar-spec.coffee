@@ -275,7 +275,7 @@ describe "less grammar", ->
 
   it 'parses variable interpolation in imports', ->
     {tokens} = grammar.tokenizeLine '@import "@{var}/tidal-wave.less";'
-    expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less','punctuation.definition.keyword.less']
+    expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less', 'punctuation.definition.keyword.less']
     expect(tokens[1]).toEqual value: "import", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less']
     expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less', 'meta.at-rule.import.css']
     expect(tokens[3]).toEqual value: "\"", scopes: ['source.css.less', 'meta.at-rule.import.css', 'string.quoted.double.css', 'punctuation.definition.string.begin.css']
