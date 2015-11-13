@@ -149,7 +149,7 @@ describe "less grammar", ->
     {tokens} = grammar.tokenizeLine '.foo { font-family: "Some Font Name", serif; }'
     expect(tokens[5]).toEqual value: 'font-family', scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
     expect(tokens[9]).toEqual value: 'Some Font Name', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css']
-    expect(tokens[12]).toEqual value: 'serif', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.font-name.css']
+    expect(tokens[13]).toEqual value: 'serif', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.font-name.css']
 
   it 'parses an incomplete property list', ->
     {tokens} = grammar.tokenizeLine '.foo { border: none}'
@@ -265,7 +265,7 @@ describe "less grammar", ->
     expect(lines[0][4]).toEqual value: 'p', scopes: ['source.css.less', 'meta.property-list.css', 'keyword.control.html.elements' ]
     expect(lines[0][5]).toEqual value: ':', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
     expect(lines[0][6]).toEqual value: 'hover', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css']
-    expect(lines[0][7]).toEqual value: ',', scopes: ['source.css.less', 'meta.property-list.css']
+    expect(lines[0][7]).toEqual value: ',', scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.separator.list.css']
     expect(lines[1][0]).toEqual value: 'p', scopes: ['source.css.less', 'meta.property-list.css', 'keyword.control.html.elements' ]
     expect(lines[1][1]).toEqual value: ':', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
     expect(lines[1][2]).toEqual value: 'active', scopes: ['source.css.less', 'meta.property-list.css', 'entity.other.attribute-name.pseudo-class.css']
