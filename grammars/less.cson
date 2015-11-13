@@ -328,6 +328,10 @@
     'name': 'punctuation.separator.key-value.css'
   }
   {
+    'match': '\\btrue\\b'
+    'name': 'constant.language.boolean.less'
+  }
+  {
     'include': '#font_name'
   }
   {

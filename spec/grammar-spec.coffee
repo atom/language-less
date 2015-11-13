@@ -293,3 +293,7 @@ describe "less grammar", ->
     expect(tokens[8]).toEqual value: "url", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css']
     expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
     expect(tokens[10]).toEqual value: "http://%20/2.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.url.css']
+
+  it 'parses the "true" value', ->
+    {tokens} = grammar.tokenizeLine '@var: true;'
+    expect(tokens[3]).toEqual value: "true", scopes: ['source.css.less', 'constant.language.boolean.less']
