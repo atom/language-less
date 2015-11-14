@@ -71,6 +71,8 @@ describe "less grammar", ->
 
   it "parses @media features", ->
     {tokens} = grammar.tokenizeLine('@media (min-width: 100px) {}')
+    expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.media.css', 'keyword.control.at-rule.media.css', 'punctuation.definition.keyword.css']
+    expect(tokens[1]).toEqual value: "media", scopes: ['source.css.less', 'meta.at-rule.media.css', 'keyword.control.at-rule.media.css']
     expect(tokens[4]).toEqual value: "min-width", scopes: ['source.css.less', 'support.type.property-name.media-feature.media.css']
     expect(tokens[7]).toEqual value: "100", scopes: ['source.css.less', 'constant.numeric.css']
     expect(tokens[8]).toEqual value: "px", scopes: ['source.css.less', 'keyword.other.unit.css']
