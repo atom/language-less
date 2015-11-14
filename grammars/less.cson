@@ -151,7 +151,7 @@
     'name': 'meta.at-rule.import.css'
     'patterns': [
       {
-        'match': '(?<=\\\(|,|\\s)\\b(reference|inline|less|once|multiple|optional)\\b(?=\\\)|,)'
+        'match': '(?<=\\\(|,|\\s)\\b(reference|optional|once|multiple|less|inline)\\b(?=\\\)|,)'
         'name': 'keyword.control.import.option.less'
       }
       {
