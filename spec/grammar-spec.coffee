@@ -231,6 +231,9 @@ describe "less grammar", ->
     expect(tokens[13]).toEqual value: "rgba", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.css']
     expect(tokens[14]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.brace.round.css']
     expect(tokens[15]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
+    expect(tokens[16]).toEqual value: ",", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.list.css']
+    expect(tokens[17]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
+    expect(tokens[18]).toEqual value: ",", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.list.css']
     expect(tokens[21]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.terminator.rule.css']
 
   it 'parses linear-gradient', ->
