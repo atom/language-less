@@ -8,10 +8,7 @@
 'foldingStopMarker': '(?<!\\*)\\*\\*/|^\\s*\\}'
 'patterns': [
   {
-    'include': '#string_double'
-  }
-  {
-    'include': '#string_single'
+    'include': '#strings'
   }
   {
     'captures':
@@ -164,10 +161,7 @@
         'include': '#comma'
       }
       {
-        'include': '#string_double'
-      }
-      {
-        'include': '#string_single'
+        'include': '#strings'
       }
     ]
   }
@@ -366,42 +360,47 @@
   'variable_interpolation':
     'match': '@{[a-zA-Z0-9_-]+}'
     'name': 'variable.other.interpolation.less'
-  'string_double':
-    'begin': '"'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.css'
-    'end': '"'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.css'
-    'name': 'string.quoted.double.css'
+  'strings':
     'patterns': [
       {
-        'match': '\\\\(\\d{1,6}|.)'
-        'name': 'constant.character.escaped.css'
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.css'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.css'
+        'name': 'string.quoted.double.css'
+        'patterns': [
+          {
+            'match': '\\\\(\\d{1,6}|.)'
+            'name': 'constant.character.escaped.css'
+          }
+          {
+            'include': '#variable_interpolation'
+          }
+        ]
       }
       {
-        'include': '#variable_interpolation'
-      }
-    ]
-  'string_single':
-    'begin': '\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.css'
-    'end': '\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.css'
-    'name': 'string.quoted.single.css'
-    'patterns': [
-      {
-        'match': '\\\\.'
-        'name': 'constant.character.escaped.css'
-      }
-      {
-        'include': '#variable_interpolation'
+        'begin': '\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.css'
+        'end': '\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.css'
+        'name': 'string.quoted.single.css'
+        'patterns': [
+          {
+            'match': '\\\\.'
+            'name': 'constant.character.escaped.css'
+          }
+          {
+            'include': '#variable_interpolation'
+          }
+        ]
       }
     ]
   'comma':
@@ -451,10 +450,7 @@
         'name': 'support.function.any-method.builtin.url.css'
         'patterns': [
           {
-            'include': '#string_double'
-          }
-          {
-            'include': '#string_single'
+            'include': '#strings'
           }
           {
             'match': '(\\b|/).*\\b'
