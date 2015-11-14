@@ -87,7 +87,7 @@
     ]
   }
   {
-    'match': '(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b(?!.*?(?<!@){)'
+    'match': '(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b(?!.*?(?<!@){)' # also look ahead for variable interpolation #37
     'name': 'constant.other.rgb-value.css'
   }
   {
@@ -430,7 +430,7 @@
     'beginCaptures':
       '1':
         'name': 'punctuation.separator.key-value.css'
-    'end': '\\s*(;)|(?=})'
+    'end': '\\s*(;)|(?=})' # for the last property of a list, look ahead for (but don't capture) the } because ; may be omitted.
     'endCaptures':
       '1':
         'name': 'punctuation.terminator.rule.css'
