@@ -228,11 +228,12 @@ describe "less grammar", ->
     expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
 
   it 'parses variable interpolation in urls', ->
-    {tokens} = grammar.tokenizeLine '.foo { background: url("@{var}/img.png"); }";'
-    expect(tokens[8]).toEqual value: "url", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css']
-    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
-    expect(tokens[11]).toEqual value: "@{var}", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.quoted.double.css', 'variable.other.interpolation.less']
-    expect(tokens[12]).toEqual value: "/img.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.quoted.double.css']
+    {tokens} = grammar.tokenizeLine '.foo { background: #F0F0F0 url("@{var}/img.png"); }";'
+    expect(tokens[8]).toEqual value: "#F0F0F0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.other.rgb-value.css']
+    expect(tokens[10]).toEqual value: "url", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css']
+    expect(tokens[11]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
+    expect(tokens[13]).toEqual value: "@{var}", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.quoted.double.css', 'variable.other.interpolation.less']
+    expect(tokens[14]).toEqual value: "/img.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.quoted.double.css']
 
   it 'parses variable interpolation in imports', ->
     {tokens} = grammar.tokenizeLine '@import "@{var}/tidal-wave.less";'
