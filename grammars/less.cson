@@ -229,11 +229,11 @@
     'include': '#variable_interpolation'
   }
   (
-    'begin': '\\{'
+    'begin': '{'
     'beginCaptures':
       '0':
         'name': 'punctuation.section.property-list.begin.css'
-    'end': '\\}'
+    'end': '}'
     'endCaptures':
       '0':
         'name': 'punctuation.section.property-list.end.css'
