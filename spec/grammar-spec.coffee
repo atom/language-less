@@ -212,6 +212,7 @@ describe "less grammar", ->
     expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less', 'punctuation.definition.keyword.less']
     expect(tokens[1]).toEqual value: "import", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.at-rule.import.less']
     expect(tokens[4]).toEqual value: "optional", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.import.option.less']
+    expect(tokens[5]).toEqual value: ",", scopes: ['source.css.less', 'meta.at-rule.import.css', 'punctuation.separator.list.css']
     expect(tokens[7]).toEqual value: "reference", scopes: ['source.css.less', 'meta.at-rule.import.css', 'keyword.control.import.option.less']
     expect(tokens[11]).toEqual value: "theme", scopes: ['source.css.less', 'meta.at-rule.import.css', 'string.quoted.double.css']
 
