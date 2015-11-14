@@ -322,6 +322,8 @@
     'name': 'punctuation.separator.key-value.css'
   }
   {
+    # true is truthy, everything else is false: there is no 'false' keyword
+    # http://lesscss.org/features/#mixin-guards-feature-guard-comparison-operators
     'match': '\\btrue\\b'
     'name': 'constant.language.boolean.less'
   }
