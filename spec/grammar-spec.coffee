@@ -190,7 +190,8 @@ describe "less grammar", ->
 
   it 'parses variable interpolation in selectors', ->
     {tokens} = grammar.tokenizeLine '.@{selector} { color: #0ee; }'
-    expect(tokens[1]).toEqual value: '@{selector}', scopes: ['source.css.less', 'variable.other.interpolation.less']
+    expect(tokens[0]).toEqual value: '.', scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: '@{selector}', scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'variable.other.interpolation.less']
     expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
     expect(tokens[3]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
     expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
