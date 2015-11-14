@@ -332,11 +332,11 @@
     'name': 'support.function.default.less'
   }
   {
-    'match': '\\b(iscolor|isnumber|isstring|iskeyword|isurl)\\b'
+    'match': '\\b(isurl|isstring|isnumber|iskeyword|iscolor)\\b'
     'name': 'support.function.type-checking.less'
   }
   {
-    'match': '\\b(ispixel|ispercentage|isem|isunit)\\b'
+    'match': '\\b(isunit|ispixel|ispercentage|isem)\\b'
     'name': 'support.function.unit-checking.less'
   }
   {
