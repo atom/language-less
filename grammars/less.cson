@@ -4,8 +4,6 @@
   'less'
   'less.erb'
 ]
-'foldingStartMarker': '/\\*\\*(?!\\*)|\\{\\s*($|/\\*(?!.*?\\*/.*\\S))'
-'foldingStopMarker': '(?<!\\*)\\*\\*/|^\\s*\\}'
 'patterns': [
   {
     'include': '#strings'
