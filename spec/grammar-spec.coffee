@@ -308,6 +308,15 @@ describe "less grammar", ->
     expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
     expect(tokens[10]).toEqual value: "../path/to/image.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.url.css']
 
+  it 'parses non-quoted urls followed by format', ->
+    {tokens} = grammar.tokenizeLine "@font-face { src: url(http://example.com/font.woff) format('woff') }"
+    expect(tokens[8]).toEqual value: "url", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css']
+    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
+    expect(tokens[10]).toEqual value: "http://example.com/font.woff", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.url.css']
+    expect(tokens[11]).toEqual value: ")", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
+    expect(tokens[12]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css']
+    expect(tokens[13]).toEqual value: "format", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.less']
+
   it 'parses the "true" value', ->
     {tokens} = grammar.tokenizeLine '@var: true;'
     expect(tokens[3]).toEqual value: "true", scopes: ['source.css.less', 'constant.language.boolean.less']
