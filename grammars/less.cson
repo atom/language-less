@@ -485,7 +485,7 @@
     'captures':
       '1':
         'name': 'punctuation.definition.entity.css'
-    'match': '(:|::)(after|before|first-letter|first-line|selection)'
+    'match': '(:|::)(after|before|first-letter|first-line|selection|shadow)'
     'name': 'entity.other.attribute-name.pseudo-element.css'
   'pseudo_classes':
     'captures':
