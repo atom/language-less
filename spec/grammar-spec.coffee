@@ -102,6 +102,17 @@ describe "less grammar", ->
     expect(tokens[4]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
     expect(tokens[5]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
 
+  it "parses pseudo element", ->
+    {tokens} = grammar.tokenizeLine('.foo::after {}')
+    expect(tokens).toHaveLength 7
+    expect(tokens[0]).toEqual value: ".", scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: "foo", scopes: ['source.css.less', 'entity.other.attribute-name.class.css']
+    expect(tokens[2]).toEqual value: "::", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-element.css', 'punctuation.definition.entity.css']
+    expect(tokens[3]).toEqual value: "after", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-element.css']
+    expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less']
+    expect(tokens[5]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.css']
+    expect(tokens[6]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
+
   it "parses id selectors", ->
     {tokens} = grammar.tokenizeLine("#abc {}")
     expect(tokens).toHaveLength 5
