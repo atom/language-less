@@ -1,8 +1,13 @@
 'name': 'Less'
 'scopeName': 'source.css.less'
+'fileNames': [
+  'gtkrc'
+  'themerc'
+]
 'fileTypes': [
   'less'
   'less.erb'
+  'rc'
 ]
 'patterns': [
   {
