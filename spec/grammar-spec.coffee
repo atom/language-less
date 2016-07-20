@@ -329,3 +329,27 @@ describe "less grammar", ->
     expect(tokens[11]).toEqual value: "default", scopes: ['source.css.less', 'support.function.default.less']
     expect(tokens[15]).toEqual value: ",", scopes: ['source.css.less', 'punctuation.separator.list.css']
     expect(tokens[18]).toEqual value: "ispixel", scopes: ['source.css.less', 'support.function.unit-checking.less']
+
+  describe 'strings', ->
+    it 'tokenizes single-quote strings', ->
+      {tokens} = grammar.tokenizeLine ".a { content: 'hi' }"
+
+      expect(tokens[8]).toEqual value: "'", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.single.css', 'punctuation.definition.string.begin.css']
+      expect(tokens[9]).toEqual value: 'hi', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.single.css']
+      expect(tokens[10]).toEqual value: "'", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.single.css', 'punctuation.definition.string.end.css']
+
+    it 'tokenizes double-quote strings', ->
+      {tokens} = grammar.tokenizeLine '.a { content: "hi" }'
+
+      expect(tokens[8]).toEqual value: '"', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css', 'punctuation.definition.string.begin.css']
+      expect(tokens[9]).toEqual value: 'hi', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css']
+      expect(tokens[10]).toEqual value: '"', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css', 'punctuation.definition.string.end.css']
+
+    it 'tokenizes escape characters', ->
+      {tokens} = grammar.tokenizeLine ".a { content: '\\abcdef' }"
+
+      expect(tokens[9]).toEqual value: '\\abcdef', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.single.css', 'constant.character.escape.css']
+
+      {tokens} = grammar.tokenizeLine '.a { content: "\\abcdef" }'
+
+      expect(tokens[9]).toEqual value: '\\abcdef', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css', 'constant.character.escape.css']

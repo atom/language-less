@@ -382,8 +382,8 @@
         'name': 'string.quoted.double.css'
         'patterns': [
           {
-            'match': '\\\\(\\d{1,6}|.)'
-            'name': 'constant.character.escaped.css'
+            'match': '\\\\(\\h{1,6}|.)'
+            'name': 'constant.character.escape.css'
           }
           {
             'include': '#variable_interpolation'
@@ -402,8 +402,8 @@
         'name': 'string.quoted.single.css'
         'patterns': [
           {
-            'match': '\\\\.'
-            'name': 'constant.character.escaped.css'
+            'match': '\\\\(\\h{1,6}|.)'
+            'name': 'constant.character.escape.css'
           }
           {
             'include': '#variable_interpolation'
