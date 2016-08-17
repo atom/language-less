@@ -203,6 +203,31 @@ describe "less grammar", ->
     expect(lines[1][0]).toEqual value: 'another-one', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
     expect(lines[1][10]).toEqual value: '}', scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.css']
 
+  it 'parses custom tag with pseudo classes', ->
+    {tokens} = grammar.tokenizeLine("very-very-custom:hover::after { color: inherit }")
+    expect(tokens[0]).toEqual value: 'very-very-custom', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
+    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
+    expect(tokens[2]).toEqual value: "hover", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css']
+    expect(tokens[3]).toEqual value: "::", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-element.css', 'punctuation.definition.entity.css']
+    expect(tokens[4]).toEqual value: "after", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-element.css']
+
+  it 'parses custom tag with pseudo classes containings dash symbol', ->
+    {tokens} = grammar.tokenizeLine("very-very-custom:first-child { color: inherit }")
+    expect(tokens[0]).toEqual value: 'very-very-custom', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
+    expect(tokens[1]).toEqual value: ":", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css', 'punctuation.definition.entity.css']
+    expect(tokens[2]).toEqual value: "first-child", scopes: ['source.css.less', 'entity.other.attribute-name.pseudo-class.css']
+
+  it 'parses custom tag with attributes', ->
+    {tokens} = grammar.tokenizeLine("very-very-custom[name=\"custom\"] { color: inherit }")
+    expect(tokens[0]).toEqual value: 'very-very-custom', scopes: ['source.css.less', 'keyword.control.html.custom.elements']
+    expect(tokens[1]).toEqual value: "[", scopes: ['source.css.less', 'meta.attribute-selector.css', 'punctuation.definition.begin.entity.css']
+    expect(tokens[2]).toEqual value: "name", scopes: ['source.css.less', 'meta.attribute-selector.css', 'entity.other.attribute-name.attribute.css']
+    expect(tokens[3]).toEqual value: "=", scopes: ['source.css.less', 'meta.attribute-selector.css', 'punctuation.separator.operator.css']
+    expect(tokens[4]).toEqual value: "\"", scopes: ['source.css.less', 'meta.attribute-selector.css', 'string.quoted.double.attribute-value.css', 'punctuation.definition.string.begin.css']
+    expect(tokens[5]).toEqual value: "custom", scopes: ['source.css.less', 'meta.attribute-selector.css', 'string.quoted.double.attribute-value.css']
+    expect(tokens[6]).toEqual value: "\"", scopes: ['source.css.less', 'meta.attribute-selector.css', 'string.quoted.double.attribute-value.css', 'punctuation.definition.string.end.css']
+    expect(tokens[7]).toEqual value: "]", scopes: ['source.css.less', 'meta.attribute-selector.css', 'punctuation.definition.end.entity.css']
+
   it "parses variables", ->
     {tokens} = grammar.tokenizeLine(".foo { border: @bar; }")
     expect(tokens).toHaveLength 12
