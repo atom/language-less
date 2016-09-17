@@ -1,7 +1,6 @@
 # Run this to update the list of builtin less functions
 
 path = require 'path'
-fs = require 'fs'
 request = require 'request'
 Promise = require 'bluebird'
 CSON = require 'season'
