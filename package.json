@@ -1,6 +1,6 @@
 {
   "name": "language-less",
-  "version": "0.29.5",
+  "version": "0.29.6",
   "description": "Less language support in Atom",
   "license": "MIT",
   "engines": {
