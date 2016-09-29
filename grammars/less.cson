@@ -432,11 +432,11 @@
     'beginCaptures':
       '1':
         'name': 'punctuation.separator.key-value.css'
-    'end': '\\s*(;)|(?=})' # for the last property of a list, look ahead for (but don't capture) the } because ; may be omitted.
+    'end': '\\s*(;)|\\s*(?=})' # for the last property of a list, look ahead for (but don't capture) the } because ; may be omitted.
     'endCaptures':
       '1':
         'name': 'punctuation.terminator.rule.css'
-    'name': 'meta.property-value.css'
+    'contentName': 'meta.property-value.css'
     'patterns': [
       {
         'match': '\\b(wrap-reverse|wrap|whitespace|wait|w-resize|visible|vertical-text|vertical-ideographic|uppercase|upper-roman|upper-alpha|unicase|underline|ultra-expanded|ultra-condensed|transparent|transform|top|titling-caps|thin|thick|text-top|text-bottom|text|tb-rl|table-row-group|table-row|table-header-group|table-footer-group|table-column-group|table-column|table-cell|table|sw-resize|super|strict|stretch|step-start|step-end|static|square|space-between|space-around|space|solid|soft-light|small-caps|separate|semi-expanded|semi-condensed|se-resize|scroll|screen|saturation|s-resize|running|rtl|row-reverse|row-resize|row|round|right|ridge|reverse|repeat-y|repeat-x|repeat|relative|progressive|progress|pre-wrap|pre-line|pre|pointer|petite-caps|paused|pan-x|pan-left|pan-right|pan-y|pan-up|pan-down|padding-box|overline|overlay|outside|outset|optimizeSpeed|optimizeLegibility|opacity|oblique|nw-resize|nowrap|not-allowed|normal|none|no-repeat|no-drop|newspaper|ne-resize|n-resize|multiply|move|middle|medium|max-height|manipulation|main-size|luminosity|ltr|lr-tb|lowercase|lower-roman|lower-alpha|loose|local|list-item|linear(?!-)|line-through|line-edge|line|lighter|lighten|left|keep-all|justify|italic|inter-word|inter-ideograph|inside|inset|inline-block|inline|inherit|infinite|inactive|ideograph-space|ideograph-parenthesis|ideograph-numeric|ideograph-alpha|hue|horizontal|hidden|help|hard-light|hand|groove|geometricPrecision|forwards|flex-start|flex-end|flex|fixed|extra-expanded|extra-condensed|expanded|exclusion|ellipsis|ease-out|ease-in-out|ease-in|ease|e-resize|double|dotted|distribute-space|distribute-letter|distribute-all-lines|distribute|disc|disabled|difference|default|decimal|dashed|darken|currentColor|crosshair|cover|content-box|contain|condensed|column-reverse|column|color-dodge|color-burn|color|collapse|col-resize|circle|char|center|capitalize|break-word|break-all|bottom|both|border-box|bolder|bold|block|bidi-override|below|baseline|balance|backwards|auto|antialiased|always|alternate-reverse|alternate|all-small-caps|all-scroll|all-petite-caps|all|absolute)\\b'
