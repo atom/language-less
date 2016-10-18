@@ -324,11 +324,13 @@ describe "less grammar", ->
     expect(tokens[3]).toEqual value: "true", scopes: ['source.css.less', 'constant.language.boolean.less']
 
   it 'parses mixin guards', ->
-    {tokens} = grammar.tokenizeLine '.mixin when (isnumber(@b)) and (default()), (ispixel(@a)) { }'
+    {tokens} = grammar.tokenizeLine '.mixin when (isnumber(@b)) and (default()), (ispixel(@a)) when not { }'
+    expect(tokens[2]).toEqual value: " when ", scopes: ['source.css.less', 'keyword.control.logical.operator']
     expect(tokens[4]).toEqual value: "isnumber", scopes: ['source.css.less', 'support.function.type-checking.less']
     expect(tokens[11]).toEqual value: "default", scopes: ['source.css.less', 'support.function.default.less']
     expect(tokens[15]).toEqual value: ",", scopes: ['source.css.less', 'punctuation.separator.list.css']
     expect(tokens[18]).toEqual value: "ispixel", scopes: ['source.css.less', 'support.function.unit-checking.less']
+    expect(tokens[23]).toEqual value: " when not ", scopes: ['source.css.less', 'keyword.control.logical.operator']
 
   describe 'strings', ->
     it 'tokenizes single-quote strings', ->

@@ -277,7 +277,7 @@
     'name': 'keyword.operator.less'
   }
   {
-    'match': '\\s(\\=\\=|\\!\\=|\\<\\=|\\>\\=|\\<|\\>|not|or|and|when)\\s'
+    'match': '\\s(\\=\\=|\\!\\=|\\<\\=|\\>\\=|\\<|\\>|not|or|and|(when not)|when)\\s'
     'name': 'keyword.control.logical.operator'
   }
   {
