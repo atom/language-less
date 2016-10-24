@@ -273,7 +273,7 @@
     "name": "keyword.other.important.css"
   }
   {
-    'match': '\\$|&|\\*|\\/|\\-|\\+|~|=|<=|>=|<|>|&&|\\?\\:|(?<!\\()/=|\\/\\b'
+    'match': '&|\\*|\\/|\\-|\\+|~|=|<=|>=|<|>'
     'name': 'keyword.operator.less'
   }
   {
