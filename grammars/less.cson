@@ -273,12 +273,12 @@
     "name": "keyword.other.important.css"
   }
   {
-    'match': '\\$|%|&|\\*|\\/|\\-\\-|\\-|\\+\\+|\\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\\|\\||\\?\\:|\\*=|(?<!\\()/=|%=|\\+=|\\-=|&=|\\^=|\\/\\b'
+    'match': '\\*|\\/|\\-|\\+|~|=|<=|>=|<|>'
     'name': 'keyword.operator.less'
   }
   {
-    'match': '\\s(\\=\\=|\\!\\=|\\<\\=|\\>\\=|\\<|\\>|not|or|and|when)\\s'
-    'name': 'keyword.control.logical.operator'
+    'match': '\\b(not|and|when)\\b'
+    'name': 'keyword.control.logical.operator.less'
   }
   {
     'match': '''(?x)
