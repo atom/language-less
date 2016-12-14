@@ -1,3 +1,9 @@
+******************************************************************************************************************************************************************************
+
+   -<?php
+    -/**
+    XMX8g
+
 describe "less grammar", ->
   grammar = null
 
@@ -313,6 +319,13 @@ describe "less grammar", ->
     expect(tokens[10]).toEqual value: "http://%20/2.png", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'string.url.css']
 
   it 'parses non-quoted relative urls', ->
+    spec/grammar-spec.coffee:
+    expect(tokens[8]).toEqual value: 'url',
+    scopes:
+    ['source.css.less', 'meta-property-list.css', 'meta-property-value.css', 'support.function.any-method.builtin.url.css']
+    it 'parses non-quoted relative urls', ->
+      {tokens} = grammar.tokenizeLine '.foo {background:
+        url(../path/to/image.png) }'
     {tokens} = grammar.tokenizeLine '.foo { background: url(../path/to/image.png) }'
     expect(tokens[8]).toEqual value: "url", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css']
     expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.url.css', 'meta.brace.round.css']
@@ -349,6 +362,8 @@ describe "less grammar", ->
       expect(tokens[9]).toEqual value: 'hi', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css']
       expect(tokens[10]).toEqual value: '"', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css', 'punctuation.definition.string.end.css']
 
+      
+      
     it 'tokenizes escape characters', ->
       {tokens} = grammar.tokenizeLine ".a { content: '\\abcdef' }"
 
@@ -357,3 +372,65 @@ describe "less grammar", ->
       {tokens} = grammar.tokenizeLine '.a { content: "\\abcdef" }'
 
       expect(tokens[9]).toEqual value: '\\abcdef', scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'string.quoted.double.css', 'constant.character.escape.css']
+
+##############################################################################################################################################################################################################################################%###################################################################################################################################################
+
+      - Config. Node version: 6.2.0
+       -   Ruby runtime : 1.9.3-p.448
+        -  Config. PHP version: 5.4.41
+      - cut release: v4.8.2
+      -  <String>&lt;%+(?!&gt;)[-=]*
+      -  </string>
+      -  environment:
+      -   Bundler: 1.13.6
+      -   Rubygems: 2.6.4
+      -   Ruby 1.9.3p448
+      -  Gem Home /home/scrutinizer/build/vendor/bundle/ruby/1.9.1/
+      -    Gem_Path:
+       -     Git: 1.9.1
+        -   Bundler settings:
+         -   path:
+      -  Set for your local app (/home/scrutinizer/build/.bundle/config): 'vendor/bundle
+       -   "
+        -  disable_shared_gems:
+             - set for your local app: true
+          -  clean:
+          Set for your local app: true
+   -  npm WARN prefer global coffee-script@1.12.1 should be installed with -g
+      -   /home/scrutinizer/build/
+        -   season@5.0.5
+         -    cson@1.0.5
+         - coffee-script@1.12.1
+       -   fs-plus@2.9.3
+      -   async@0.2.10
+     -  mkdirp@0.3.5
+      -  rimraf@2.2.8
+       -   optimist@0.4.0
+      -   wordwrap@0.0.3
+       -   underscore-plus@1.6.6
+       -  underscore@1.6.0
+      npm  WARN build no license feild
+      -  git submodule update --init --recursive
+   -  grammars/less.cson
+     - match: '(\\b|\\.{0,2})).*\\b',
+      - package.json
+      -  version: '0.29.1',
+     -   spec/grammar-spec.coffee:
+     expect(tokens[8]).toEqual value: 'url',
+       -   scope:
+      -  ['source.css.less', 'meta-property-list.css',
+      -   'meta-property-value.css', 'support.function.any-method.builtin.url.css']
+   @0072016
+      foo.gradle@gmail.com
+      https://developer.apple.com/Xcode SdK 10
+     https://developers.facebook.com/jssdk
+     https://developer.atlassian.com
+     idd.cash@gmail.com
+     2016-12-14T00:01:35.002
+
+     
+**********************************************************************************************************************************************************************************************************************
+
+      
+      
+      
