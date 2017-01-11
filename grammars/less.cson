@@ -238,11 +238,11 @@
     'begin': '{'
     'beginCaptures':
       '0':
-        'name': 'punctuation.section.property-list.begin.css'
+        'name': 'punctuation.section.property-list.begin.bracket.curly.css'
     'end': '}'
     'endCaptures':
       '0':
-        'name': 'punctuation.section.property-list.end.css'
+        'name': 'punctuation.section.property-list.end.bracket.curly.css'
     'name': 'meta.property-list.css'
     'patterns': [
       {
@@ -442,7 +442,7 @@
     ]
   'commas':
     'match': ','
-    'name': 'punctuation.separator.list.css'
+    'name': 'punctuation.separator.list.comma.css'
   'brace_round':
     'match': '\\(|\\)'
     'name': 'meta.brace.round.css'
