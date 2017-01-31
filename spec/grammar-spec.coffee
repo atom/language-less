@@ -218,6 +218,23 @@ describe "less grammar", ->
     expect(tokens[10]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[11]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.bracket.curly.css']
 
+  it "parses css variables", ->
+    {tokens} = grammar.tokenizeLine(".foo { --spacing-unit: 6px; }")
+    expect(tokens).toHaveLength 13
+    expect(tokens[0]).toEqual value: ".", scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
+    expect(tokens[1]).toEqual value: "foo", scopes: ['source.css.less', 'entity.other.attribute-name.class.css']
+    expect(tokens[2]).toEqual value: " ", scopes: ['source.css.less']
+    expect(tokens[3]).toEqual value: "{", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.bracket.curly.css']
+    expect(tokens[4]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[5]).toEqual value: "--spacing-unit", scopes: ['source.css.less', 'meta.property-list.css', 'variable.other.less']
+    expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.separator.key-value.css']
+    expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[8]).toEqual value: "6", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
+    expect(tokens[9]).toEqual value: "px", scopes: [ 'source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'keyword.other.unit.css' ]
+    expect(tokens[10]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.terminator.rule.css']
+    expect(tokens[11]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
+    expect(tokens[12]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.bracket.curly.css']
+
   it 'parses variable interpolation in selectors', ->
     {tokens} = grammar.tokenizeLine '.@{selector} { color: #0ee; }'
     expect(tokens[0]).toEqual value: '.', scopes: ['source.css.less', 'entity.other.attribute-name.class.css', 'punctuation.definition.entity.css']
