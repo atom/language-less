@@ -3,6 +3,9 @@ describe "less grammar", ->
 
   beforeEach ->
     waitsForPromise ->
+      atom.packages.activatePackage("language-css")
+
+    waitsForPromise ->
       atom.packages.activatePackage("language-less")
 
     runs ->
@@ -28,8 +31,8 @@ describe "less grammar", ->
 
   it 'parses color names', ->
     {tokens} = grammar.tokenizeLine '.foo { color: rebeccapurple; background: whitesmoke; }'
-    expect(tokens[8]).toEqual value: "rebeccapurple", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.color.w3c-standard-color-name.css']
-    expect(tokens[14]).toEqual value: "whitesmoke", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.color.w3c-standard-color-name.css']
+    expect(tokens[8]).toEqual value: "rebeccapurple", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.color.w3c-extended-color-name.css']
+    expect(tokens[14]).toEqual value: "whitesmoke", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.color.w3c-extended-color-name.css']
 
   it "parses property names", ->
     {tokens} = grammar.tokenizeLine("{display: none;}")
@@ -73,13 +76,13 @@ describe "less grammar", ->
     {tokens} = grammar.tokenizeLine('@media (min-width: 100px) {}')
     expect(tokens[0]).toEqual value: "@", scopes: ['source.css.less', 'meta.at-rule.media.css', 'keyword.control.at-rule.media.css', 'punctuation.definition.keyword.css']
     expect(tokens[1]).toEqual value: "media", scopes: ['source.css.less', 'meta.at-rule.media.css', 'keyword.control.at-rule.media.css']
-    expect(tokens[4]).toEqual value: "min-width", scopes: ['source.css.less', 'support.type.property-name.media-feature.media.css']
+    expect(tokens[4]).toEqual value: "min-width", scopes: ['source.css.less', 'support.type.property-name.media.css']
     expect(tokens[7]).toEqual value: "100", scopes: ['source.css.less', 'constant.numeric.css']
     expect(tokens[8]).toEqual value: "px", scopes: ['source.css.less', 'keyword.other.unit.css']
 
   it "parses @media orientation", ->
     {tokens} = grammar.tokenizeLine('@media (orientation: portrait){}')
-    expect(tokens[4]).toEqual value: "orientation", scopes: ['source.css.less', 'support.type.property-name.media-feature.media.css']
+    expect(tokens[4]).toEqual value: "orientation", scopes: ['source.css.less', 'support.type.property-name.media.css']
     expect(tokens[7]).toEqual value: "portrait", scopes: ['source.css.less', 'support.constant.property-value.media-property.media.css']
 
   it "parses parent selector", ->
@@ -291,12 +294,12 @@ describe "less grammar", ->
     expect(tokens[8]).toEqual value: "1", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
     expect(tokens[9]).toEqual value: "px", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'keyword.other.unit.css']
     expect(tokens[11]).toEqual value: "solid", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
-    expect(tokens[13]).toEqual value: "rgba", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.css']
-    expect(tokens[14]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.brace.round.css']
-    expect(tokens[15]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
-    expect(tokens[16]).toEqual value: ",", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.list.comma.css']
-    expect(tokens[17]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
-    expect(tokens[18]).toEqual value: ",", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.separator.list.comma.css']
+    expect(tokens[13]).toEqual value: "rgba", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'support.function.misc.css']
+    expect(tokens[14]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'punctuation.section.function.begin.bracket.round.css']
+    expect(tokens[15]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'constant.numeric.css']
+    expect(tokens[16]).toEqual value: ",", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'punctuation.separator.list.comma.css']
+    expect(tokens[17]).toEqual value: "0", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'constant.numeric.css']
+    expect(tokens[18]).toEqual value: ",", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'punctuation.separator.list.comma.css']
     expect(tokens[21]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.terminator.rule.css']
 
   it 'parses linear-gradient', ->
@@ -304,16 +307,16 @@ describe "less grammar", ->
     expect(tokens[5]).toEqual value: "background", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.separator.key-value.css']
     expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
-    expect(tokens[8]).toEqual value: "linear-gradient", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.css']
-    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.brace.round.css']
+    expect(tokens[8]).toEqual value: "linear-gradient", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.gradient.css', 'support.function.gradient.css']
+    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.gradient.css', 'punctuation.section.function.begin.bracket.round.css']
 
   it 'parses transform functions', ->
     {tokens} = grammar.tokenizeLine '.foo { transform: scaleY(1); }'
     expect(tokens[5]).toEqual value: "transform", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.separator.key-value.css']
     expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
-    expect(tokens[8]).toEqual value: "scaleY", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.any-method.builtin.css']
-    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.brace.round.css']
+    expect(tokens[8]).toEqual value: "scaleY", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.function.transform.css']
+    expect(tokens[9]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'punctuation.section.function.begin.bracket.round.css']
 
   it 'parses blend modes', ->
     {tokens} = grammar.tokenizeLine '.foo { background-blend-mode: color-dodge; }'
