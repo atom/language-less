@@ -219,11 +219,11 @@
     ]
   }
   {
+    'match': '(@|\\-\\-)[\\w-]+(?=\\s*)'
+    'name': 'variable.other.less'
     'captures':
       '1':
         'name': 'punctuation.definition.variable.less'
-    'match': '(?:@|\\-\\-)[a-zA-Z0-9_-][\\w-]*(?=\\s*)'
-    'name': 'variable.other.less'
   }
   {
     'include': '#variable_interpolation'
