@@ -233,7 +233,7 @@ describe "Less grammar", ->
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.separator.key-value.css']
     expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[8]).toEqual value: "6", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
-    expect(tokens[9]).toEqual value: "px", scopes: [ 'source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css', 'keyword.other.unit.px.css']
+    expect(tokens[9]).toEqual value: "px", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css', 'keyword.other.unit.px.css']
     expect(tokens[10]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.terminator.rule.css']
     expect(tokens[11]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[12]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.bracket.curly.css']
