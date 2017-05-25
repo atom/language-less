@@ -1,4 +1,4 @@
-describe "less grammar", ->
+describe "Less grammar", ->
   grammar = null
 
   beforeEach ->
@@ -15,7 +15,7 @@ describe "less grammar", ->
     expect(grammar).toBeDefined()
     expect(grammar.scopeName).toBe "source.css.less"
 
-  it "parses constant.numeric.css", ->
+  it "parses numbers", ->
     {tokens} = grammar.tokenizeLine(" 10")
     expect(tokens).toHaveLength 2
     expect(tokens[0]).toEqual value: " ", scopes: ['source.css.less']
@@ -78,7 +78,7 @@ describe "less grammar", ->
     expect(tokens[1]).toEqual value: "media", scopes: ['source.css.less', 'meta.at-rule.media.css', 'keyword.control.at-rule.media.css']
     expect(tokens[4]).toEqual value: "min-width", scopes: ['source.css.less', 'support.type.property-name.media.css']
     expect(tokens[7]).toEqual value: "100", scopes: ['source.css.less', 'constant.numeric.css']
-    expect(tokens[8]).toEqual value: "px", scopes: ['source.css.less', 'keyword.other.unit.css']
+    expect(tokens[8]).toEqual value: "px", scopes: ['source.css.less', 'constant.numeric.css', 'keyword.other.unit.px.css']
 
   it "parses @media orientation", ->
     {tokens} = grammar.tokenizeLine('@media (orientation: portrait){}')
@@ -233,7 +233,7 @@ describe "less grammar", ->
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.separator.key-value.css']
     expect(tokens[7]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[8]).toEqual value: "6", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
-    expect(tokens[9]).toEqual value: "px", scopes: [ 'source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'keyword.other.unit.css' ]
+    expect(tokens[9]).toEqual value: "px", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css', 'keyword.other.unit.px.css']
     expect(tokens[10]).toEqual value: ";", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.terminator.rule.css']
     expect(tokens[11]).toEqual value: " ", scopes: ['source.css.less', 'meta.property-list.css']
     expect(tokens[12]).toEqual value: "}", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.section.property-list.end.bracket.curly.css']
@@ -292,7 +292,7 @@ describe "less grammar", ->
     expect(tokens[5]).toEqual value: "border", scopes: ['source.css.less', 'meta.property-list.css', 'support.type.property-name.css']
     expect(tokens[6]).toEqual value: ":", scopes: ['source.css.less', 'meta.property-list.css', 'punctuation.separator.key-value.css']
     expect(tokens[8]).toEqual value: "1", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css']
-    expect(tokens[9]).toEqual value: "px", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'keyword.other.unit.css']
+    expect(tokens[9]).toEqual value: "px", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'constant.numeric.css', 'keyword.other.unit.px.css']
     expect(tokens[11]).toEqual value: "solid", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'support.constant.property-value.css']
     expect(tokens[13]).toEqual value: "rgba", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'support.function.misc.css']
     expect(tokens[14]).toEqual value: "(", scopes: ['source.css.less', 'meta.property-list.css', 'meta.property-value.css', 'meta.function.color.css', 'punctuation.section.function.begin.bracket.round.css']
