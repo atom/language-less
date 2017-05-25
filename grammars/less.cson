@@ -429,7 +429,7 @@
             'include': '#strings'
           }
           {
-            'match': '(\\b|\\.{0,2}/).*\\b'
+            'match': '(\\b|\\.{0,2}/)[^)]*\\b'
             'name': 'string.url.css'
           }
         ]
