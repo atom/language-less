@@ -470,11 +470,11 @@
     'begin': '\\('
     'beginCaptures':
       '0':
-        'name': 'punctuation.definition.parameters.begin.less'
+        'name': 'punctuation.definition.parameters.begin.bracket.round.less'
     'end': '\\)'
     'endCaptures':
       '0':
-        'name': 'punctuation.definition.parameters.end.less'
+        'name': 'punctuation.definition.parameters.end.bracket.round.less'
     'patterns': [
       {
         'include': '#parameter'
@@ -492,7 +492,7 @@
     'patterns': [
       {
         'match': ':'
-        'name': 'keyword.operator.assignment.less'
+        'name': 'punctuation.separator.key-value.less'
       }
       {
         'include': 'source.css#numeric-values'
