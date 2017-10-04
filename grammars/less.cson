@@ -13,10 +13,7 @@
     'include': '#strings'
   }
   {
-    'captures':
-      '1':
-        'name': 'entity.other.attribute-name.class.mixin.css'
-    'match': '(\\.[_a-zA-Z][a-zA-Z0-9_-]*(?=\\())'
+    'include': '#mixins'
   }
   {
     'captures':
@@ -456,3 +453,51 @@
   'less_builtin_functions':
     'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|calc|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b'
     'name': 'support.function.any-method.builtin.less'
+  'mixins':
+    'name': 'meta.mixin.less'
+    'begin': '(\\.[_a-zA-Z][a-zA-Z0-9_-]*)(?=\\()'
+    'beginCaptures':
+      '0':
+        'name': 'meta.definition.mixin.less entity.name.mixin.less'
+    'end': '(?=$|^|;)|(?<=\\})'
+    'patterns': [
+      {
+        'include': '#mixin-parameters'
+      }
+    ]
+  'mixin-parameters':
+    'name': 'meta.parameters.less'
+    'begin': '\\('
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.parameters.begin.less'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.parameters.end.less'
+    'patterns': [
+      {
+        'include': '#parameter'
+      }
+    ]
+  'parameter':
+    'begin': '(@[a-zA-Z][a-zA-Z0-9-]*)'
+    'beginCaptures':
+      '0':
+        'name': 'variable.parameter.less'
+    'end': '(?:([,;])|(?=\\)))'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.separator.parameter.less'
+    'patterns': [
+      {
+        'match': ':'
+        'name': 'keyword.operator.assignment.less'
+      }
+      {
+        'include': 'source.css#numeric-values'
+      }
+      {
+        'include': 'source.css#color-keywords'
+      }
+    ]
