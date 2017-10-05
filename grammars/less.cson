@@ -576,7 +576,6 @@
 
   'mixin_guards':
     'name': 'meta.guard.less'
-    # 'begin': '(?:(?:(when|and|not)|(,)) *)+(\\()'
     'begin': '(?:(when|and|when +not|and +not) *|(,) *)+(\\()'
     'beginCaptures':
       '1':
