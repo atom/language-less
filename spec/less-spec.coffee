@@ -352,15 +352,402 @@ describe "Less grammar", ->
 
   it 'parses mixin guards', ->
     {tokens} = grammar.tokenizeLine '.mixin() when (isnumber(@b)) and (default()), (ispixel(@a)) and  not (@a < 0) { }'
-    expect(tokens[4]).toEqual value: "when", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[7]).toEqual value: "isnumber", scopes: ['source.css.less', 'support.function.type-checking.less']
-    expect(tokens[14]).toEqual value: "and", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[17]).toEqual value: "default", scopes: ['source.css.less', 'support.function.default.less']
-    expect(tokens[21]).toEqual value: ",", scopes: ['source.css.less', 'punctuation.separator.list.comma.css']
-    expect(tokens[24]).toEqual value: "ispixel", scopes: ['source.css.less', 'support.function.unit-checking.less']
-    expect(tokens[31]).toEqual value: "and", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[33]).toEqual value: "not", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[39]).toEqual value: "<", scopes: ['source.css.less', 'keyword.operator.less']
+    expect(tokens).toEqual(
+      [
+        {
+          "value": ".mixin",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.definition.mixin.less entity.name.mixin.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.parameters.less",
+            "punctuation.definition.parameters.begin.bracket.round.less"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.parameters.less",
+            "punctuation.definition.parameters.end.bracket.round.less"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less"
+          ]
+        },
+        {
+          "value": "when",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "keyword.control.logical.operator.less"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": "isnumber",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "support.function.type-checking.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": "@",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "variable.other.less",
+            "punctuation.definition.variable.less"
+          ]
+        },
+        {
+          "value": "b",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "variable.other.less"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less"
+          ]
+        },
+        {
+          "value": "and",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "keyword.control.logical.operator.less"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": "default",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "support.function.default.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": ",",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "punctuation.separator.list.comma.css"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": "ispixel",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "support.function.unit-checking.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": "@",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "variable.other.less",
+            "punctuation.definition.variable.less"
+          ]
+        },
+        {
+          "value": "a",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "variable.other.less"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less"
+          ]
+        },
+        {
+          "value": "and  not",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "keyword.control.logical.operator.less"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less"
+          ]
+        },
+        {
+          "value": "(",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": "@",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "variable.other.less",
+            "punctuation.definition.variable.less"
+          ]
+        },
+        {
+          "value": "a",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "variable.other.less"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less"
+          ]
+        },
+        {
+          "value": "<",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "keyword.operator.less"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less"
+          ]
+        },
+        {
+          "value": "0",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "constant.numeric.css"
+          ]
+        },
+        {
+          "value": ")",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.guard.less",
+            "meta.brace.round.css"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less"
+          ]
+        },
+        {
+          "value": "{",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.property-list.css",
+            "punctuation.section.property-list.begin.bracket.curly.css"
+          ]
+        },
+        {
+          "value": " ",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.property-list.css"
+          ]
+        },
+        {
+          "value": "}",
+          "scopes": [
+            "source.css.less",
+            "meta.mixin.less",
+            "meta.property-list.css",
+            "punctuation.section.property-list.end.bracket.curly.css"
+          ]
+        }
+      ]
+    )
 
   describe 'strings', ->
     it 'tokenizes single-quote strings', ->
