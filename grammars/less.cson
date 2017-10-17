@@ -512,7 +512,7 @@
         'name': 'entity.name.mixin.less'
       '2':
         'name': 'punctuation.definition.mixin.less'
-    'end': '(?<=\\})'
+    'end': '(?<=})'
     'patterns': [
       {
         'include': '#mixin_parameters'
@@ -565,7 +565,7 @@
     ]
   'mixin_guards':
     'name': 'meta.guard.less'
-    'begin': '(?:(when|and|when +not|and +not) *|(,) *)+(\\()'
+    'begin': '(?:(when|and|when\\s+not|and\\s+not)\\s*|(,)\\s*)+(\\()'
     'beginCaptures':
       '1':
         'name': 'keyword.control.logical.operator.less'
@@ -573,7 +573,7 @@
         'name': 'punctuation.separator.list.comma.css'
       '3':
         'name': 'meta.brace.round.css'
-    'end': '(\\))'
+    'end': '\\)'
     'endCaptures':
       '0':
         'name': 'meta.brace.round.css'
