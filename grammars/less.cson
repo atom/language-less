@@ -341,18 +341,15 @@
     # http://lesscss.org/features/#mixin-guards-feature-guard-comparison-operators
     'match': '\\btrue\\b'
     'name': 'constant.language.boolean.less'
-
   'variables':
     'match': '(@|\\-\\-)[\\w-]+(?=\\s*)'
     'name': 'variable.other.less'
     'captures':
       '1':
         'name': 'punctuation.definition.variable.less'
-
   'variable_interpolation':
     'match': '@{[a-zA-Z0-9_-]+}'
     'name': 'variable.other.interpolation.less'
-
   'strings':
     'patterns': [
       {
@@ -396,19 +393,15 @@
         ]
       }
     ]
-
   'brace_round':
     'match': '\\(|\\)'
     'name': 'meta.brace.round.css'
-
   'operators':
     'match': '\\*|\\/|\\-|\\+|~|=|<=|>=|<|>'
     'name': 'keyword.operator.less'
-
   'logical_operators':
     'match': '\\b(not|and|when)\\b'
     'name': 'keyword.control.logical.operator.less'
-
   'property_values':
     'begin': '(?<!&)(:)\\s*(?!(\\s*{))(?!.*(?<!@){)'
     'beginCaptures':
@@ -459,11 +452,9 @@
         'include': '$self'
       }
     ]
-
   'less_builtin_functions':
     'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|calc|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b'
     'name': 'support.function.any-method.builtin.less'
-
   'function_type_checking':
     'begin': '\\b(isurl|isstring|isnumber|iskeyword|iscolor)(\\()'
     'beginCaptures':
@@ -483,7 +474,6 @@
         'include': '#variables'
       }
     ]
-
   'function_default':
     'match': '\\b(default)(\\()(\\))'
     'captures':
@@ -493,7 +483,6 @@
         'name': 'meta.brace.round.css'
       '3':
         'name': 'meta.brace.round.css'
-
   'function_unit_checking':
     'begin': '\\b(isunit|ispixel|ispercentage|isem)(\\()'
     'beginCaptures':
@@ -513,7 +502,6 @@
         'include': '#variables'
       }
     ]
-
   'mixins':
     'name': 'meta.mixin.less'
     'begin': '(\\.[_a-zA-Z][a-zA-Z0-9_-]*)(?= *\\()'
@@ -532,7 +520,6 @@
         'include': '$self'
       }
     ]
-
   'mixin_parameters':
     'name': 'meta.parameters.less'
     'begin': '\\((?=\\s*@|\\))'
@@ -548,7 +535,6 @@
         'include': '#mixin_parameter'
       }
     ]
-
   'mixin_parameter':
     'begin': '(@[a-zA-Z][a-zA-Z0-9-]*)'
     'beginCaptures':
@@ -573,7 +559,6 @@
         'include': '#strings'
       }
     ]
-
   'mixin_guards':
     'name': 'meta.guard.less'
     'begin': '(?:(when|and|when +not|and +not) *|(,) *)+(\\()'
