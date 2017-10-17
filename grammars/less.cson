@@ -504,10 +504,14 @@
     ]
   'mixins':
     'name': 'meta.mixin.less'
-    'begin': '(\\.[_a-zA-Z][a-zA-Z0-9_-]*)(?= *\\()'
+    'begin': '((\\.)[_a-zA-Z][a-zA-Z0-9_-]*)(?=\\s*\\()'
     'beginCaptures':
       '0':
-        'name': 'meta.definition.mixin.less entity.name.mixin.less'
+        'name': 'meta.definition.mixin.less'
+      '1':
+        'name': 'entity.name.mixin.less'
+      '2':
+        'name': 'punctuation.definition.mixin.less'
     'end': '(?<=\\})'
     'patterns': [
       {
