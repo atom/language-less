@@ -536,15 +536,23 @@
         'name': 'punctuation.definition.parameters.end.bracket.round.less'
     'patterns': [
       {
+        'include': '#mixin_parameter_semicolon'
+      }
+      {
+        'include': '#mixin_parameter_comma'
+      }
+      {
         'include': '#mixin_parameter'
       }
     ]
-  'mixin_parameter':
-    'begin': '(@[a-zA-Z][a-zA-Z0-9-]*)'
+  'mixin_parameter_semicolon':
+    'begin': '(@)[a-zA-Z][a-zA-Z0-9-]*(?=.*?;)'
     'beginCaptures':
       '0':
         'name': 'variable.parameter.less'
-    'end': '(?:([,;])|(?=\\)))'
+      '1':
+        'name': 'punctuation.definition.variable.less'
+    'end': ';'
     'endCaptures':
       '0':
         'name': 'punctuation.separator.parameter.less'
@@ -560,7 +568,89 @@
         'include': 'source.css#color-keywords'
       }
       {
+        'include': 'source.css#functions'
+      }
+      {
+        'include': '#less_builtin_functions'
+      }
+      {
+        'include': 'source.css#property-keywords'
+      }
+      {
         'include': '#strings'
+      }
+      {
+        'include': 'source.css#commas'
+      }
+    ]
+  'mixin_parameter_comma':
+    'begin': '(@)[a-zA-Z][a-zA-Z0-9-]*(?=.*?,\\s*@)'
+    'beginCaptures':
+      '0':
+        'name': 'variable.parameter.less'
+      '1':
+        'name': 'punctuation.definition.variable.less'
+    'end': '(,)(?=\\s*@)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.separator.parameter.less'
+    'patterns': [
+      {
+        'match': ':'
+        'name': 'punctuation.separator.key-value.less'
+      }
+      {
+        'include': 'source.css#numeric-values'
+      }
+      {
+        'include': 'source.css#color-keywords'
+      }
+      {
+        'include': 'source.css#functions'
+      }
+      {
+        'include': '#less_builtin_functions'
+      }
+      {
+        'include': 'source.css#property-keywords'
+      }
+      {
+        'include': '#strings'
+      }
+    ]
+  'mixin_parameter':
+    'begin': '(@)[a-zA-Z][a-zA-Z0-9-]*'
+    'beginCaptures':
+      '0':
+        'name': 'variable.parameter.less'
+      '1':
+        'name': 'punctuation.definition.variable.less'
+    'end': '(?=\\))'
+    'patterns': [
+      {
+        'match': ':'
+        'name': 'punctuation.separator.key-value.less'
+      }
+      {
+        'include': 'source.css#numeric-values'
+      }
+      {
+        'include': 'source.css#color-keywords'
+      }
+      {
+        'include': 'source.css#functions'
+      }
+      {
+        'include': '#less_builtin_functions'
+      }
+      {
+        'include': 'source.css#property-keywords'
+      }
+      {
+        'include': '#strings'
+      }
+      {
+        'include': 'source.css#commas'
       }
     ]
   'mixin_guards':
