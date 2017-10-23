@@ -19,6 +19,6 @@
     "bluebird": "^2.9.25",
     "coffeelint": "^1.10.1",
     "request": "^2.53.0",
-    "season": "^5.2.0"
+    "season": "^6.0.2"
   }
 }
