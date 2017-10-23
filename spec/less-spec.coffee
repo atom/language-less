@@ -411,7 +411,7 @@ describe "Less grammar", ->
       expect(tokens[41]).toEqual value: '@', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less', 'punctuation.definition.variable.less']
       expect(tokens[42]).toEqual value: 'c', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less']
       expect(tokens[43]).toEqual value: ')', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.definition.parameters.end.bracket.round.less']
-      expect(tokens[44].scopes).not.toContain 'meta.parameters.less'
+      expect(tokens[44]).toEqual value: ' ', scopes: ['source.css.less', 'meta.mixin.less']
 
   describe 'strings', ->
     it 'tokenizes single-quote strings', ->
