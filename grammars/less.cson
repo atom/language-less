@@ -342,7 +342,7 @@
     'match': '\\btrue\\b'
     'name': 'constant.language.boolean.less'
   'variables':
-    'match': '(@|\\-\\-)[\\w-]+(?=\\s*)'
+    'match': '(@|\\-\\-)[\\w-]+'
     'name': 'variable.other.less'
     'captures':
       '1':
@@ -590,9 +590,9 @@
         'name': 'variable.parameter.less'
       '1':
         'name': 'punctuation.definition.variable.less'
-    'end': '(,)(?=\\s*@)'
+    'end': ',(?=\\s*@)'
     'endCaptures':
-      '1':
+      '0':
         'name': 'punctuation.separator.parameter.less'
     'patterns': [
       {
