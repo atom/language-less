@@ -350,17 +350,68 @@ describe "Less grammar", ->
     {tokens} = grammar.tokenizeLine '@var: true;'
     expect(tokens[4]).toEqual value: "true", scopes: ['source.css.less', 'constant.language.boolean.less']
 
-  it 'parses mixin guards', ->
-    {tokens} = grammar.tokenizeLine '.mixin() when (isnumber(@b)) and (default()), (ispixel(@a)) and  not (@a < 0) { }'
-    expect(tokens[4]).toEqual value: "when", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[7]).toEqual value: "isnumber", scopes: ['source.css.less', 'support.function.type-checking.less']
-    expect(tokens[14]).toEqual value: "and", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[17]).toEqual value: "default", scopes: ['source.css.less', 'support.function.default.less']
-    expect(tokens[21]).toEqual value: ",", scopes: ['source.css.less', 'punctuation.separator.list.comma.css']
-    expect(tokens[24]).toEqual value: "ispixel", scopes: ['source.css.less', 'support.function.unit-checking.less']
-    expect(tokens[31]).toEqual value: "and", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[33]).toEqual value: "not", scopes: ['source.css.less', 'keyword.control.logical.operator.less']
-    expect(tokens[39]).toEqual value: "<", scopes: ['source.css.less', 'keyword.operator.less']
+  describe 'mixins', ->
+    it 'parses mixin guards', ->
+      {tokens} = grammar.tokenizeLine '.mixin() when (isnumber(@b)) and (default()), (ispixel(@a)) and not (@a < 0) { }'
+      expect(tokens[0]).toEqual value: '.', scopes: ['source.css.less', 'meta.mixin.less', 'meta.definition.mixin.less', 'entity.name.mixin.less', 'punctuation.definition.mixin.less']
+      expect(tokens[1]).toEqual value: 'mixin', scopes: ['source.css.less', 'meta.mixin.less', 'meta.definition.mixin.less', 'entity.name.mixin.less']
+      expect(tokens[2]).toEqual value: '(', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.definition.parameters.begin.bracket.round.less']
+      expect(tokens[3]).toEqual value: ')', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.definition.parameters.end.bracket.round.less']
+      expect(tokens[5]).toEqual value: 'when', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less', 'keyword.control.logical.operator.less']
+      expect(tokens[6]).toEqual value: ' ', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less']
+      expect(tokens[8]).toEqual value: 'isnumber', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less', 'support.function.type-checking.less']
+      expect(tokens[10]).toEqual value: '@', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less', 'variable.other.less', 'punctuation.definition.variable.less']
+      expect(tokens[11]).toEqual value: 'b', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less', 'variable.other.less']
+      expect(tokens[15]).toEqual value: 'and', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less', 'keyword.control.logical.operator.less']
+      expect(tokens[22]).toEqual value: ',', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less', 'punctuation.separator.list.comma.css']
+      expect(tokens[32]).toEqual value: 'and not', scopes: ['source.css.less', 'meta.mixin.less', 'meta.guard.less', 'keyword.control.logical.operator.less']
+      expect(tokens[43]).toEqual value: '{', scopes: ['source.css.less', 'meta.mixin.less', 'meta.property-list.css', 'punctuation.section.property-list.begin.bracket.curly.css']
+
+    it 'parses mixin parameters', ->
+      {tokens} = grammar.tokenizeLine '.foo(@a: 4px, @b) {}'
+      expect(tokens[0]).toEqual value: '.', scopes: ['source.css.less', 'meta.mixin.less', 'meta.definition.mixin.less', 'entity.name.mixin.less', 'punctuation.definition.mixin.less']
+      expect(tokens[1]).toEqual value: 'foo', scopes: ['source.css.less', 'meta.mixin.less', 'meta.definition.mixin.less', 'entity.name.mixin.less']
+      expect(tokens[2]).toEqual value: '(', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.definition.parameters.begin.bracket.round.less']
+      expect(tokens[3]).toEqual value: '@', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less', 'punctuation.definition.variable.less']
+      expect(tokens[4]).toEqual value: 'a', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less']
+      expect(tokens[5]).toEqual value: ':', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.key-value.less']
+      expect(tokens[7]).toEqual value: '4', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'constant.numeric.css']
+      expect(tokens[8]).toEqual value: 'px', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'constant.numeric.css', 'keyword.other.unit.px.css']
+      expect(tokens[9]).toEqual value: ',', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.parameter.less']
+      expect(tokens[11]).toEqual value: '@', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less', 'punctuation.definition.variable.less']
+      expect(tokens[12]).toEqual value: 'b', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less']
+      expect(tokens[13]).toEqual value: ')', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.definition.parameters.end.bracket.round.less']
+
+    it 'parses mixin parameters with lists and semicolons', ->
+      {tokens} = grammar.tokenizeLine '.foo(@a: darken(#fafafa), absolute, calc(100vh - 40px + 5%), red; @b; @c) {}'
+      expect(tokens[3]).toEqual value: '@', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less', 'punctuation.definition.variable.less']
+      expect(tokens[4]).toEqual value: 'a', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less']
+      expect(tokens[5]).toEqual value: ':', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.key-value.less']
+      expect(tokens[7]).toEqual value: 'darken', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'support.function.any-method.builtin.less']
+      expect(tokens[9]).toEqual value: '#', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'constant.other.color.rgb-value.hex.css', 'punctuation.definition.constant.css']
+      expect(tokens[10]).toEqual value: 'fafafa', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'constant.other.color.rgb-value.hex.css']
+      expect(tokens[12]).toEqual value: ',', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.list.comma.css']
+      expect(tokens[14]).toEqual value: 'absolute', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'support.constant.property-value.css']
+      expect(tokens[15]).toEqual value: ',', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.list.comma.css']
+      expect(tokens[17]).toEqual value: 'calc', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'support.function.calc.css']
+      expect(tokens[19]).toEqual value: '100', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'constant.numeric.css']
+      expect(tokens[20]).toEqual value: 'vh', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'constant.numeric.css', 'keyword.other.unit.vh.css']
+      expect(tokens[22]).toEqual value: '-', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'keyword.operator.arithmetic.css']
+      expect(tokens[24]).toEqual value: '40', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'constant.numeric.css']
+      expect(tokens[25]).toEqual value: 'px', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'constant.numeric.css', 'keyword.other.unit.px.css']
+      expect(tokens[27]).toEqual value: '+', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'keyword.operator.arithmetic.css']
+      expect(tokens[29]).toEqual value: '5', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'constant.numeric.css']
+      expect(tokens[30]).toEqual value: '%', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'meta.function.calc.css', 'constant.numeric.css', 'keyword.other.unit.percentage.css']
+      expect(tokens[32]).toEqual value: ',', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.list.comma.css']
+      expect(tokens[34]).toEqual value: 'red', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'support.constant.color.w3c-standard-color-name.css']
+      expect(tokens[35]).toEqual value: ';', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.parameter.less']
+      expect(tokens[37]).toEqual value: '@', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less', 'punctuation.definition.variable.less']
+      expect(tokens[38]).toEqual value: 'b', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less']
+      expect(tokens[39]).toEqual value: ';', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.separator.parameter.less']
+      expect(tokens[41]).toEqual value: '@', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less', 'punctuation.definition.variable.less']
+      expect(tokens[42]).toEqual value: 'c', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'variable.parameter.less']
+      expect(tokens[43]).toEqual value: ')', scopes: ['source.css.less', 'meta.mixin.less', 'meta.parameters.less', 'punctuation.definition.parameters.end.bracket.round.less']
+      expect(tokens[44]).toEqual value: ' ', scopes: ['source.css.less', 'meta.mixin.less']
 
   describe 'strings', ->
     it 'tokenizes single-quote strings', ->
