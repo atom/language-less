@@ -1,5 +1,6 @@
 ".source.css.less":
   editor:
+    nonWordCharacters: '/\\()"\':,.;<>~!#$%^&*|+=[]{}`?…'
     commentStart: "// "
   autocomplete:
     symbols:
