@@ -1,8 +1,8 @@
 ".source.css.less":
   editor:
-    nonWordCharacters: '/\\()"\':,.;<>~!#$%^&*|+=[]{}`?…'
     commentStart: "// "
   autocomplete:
+    extraWordCharacters: '-'
     symbols:
       variable:
         selector: ".variable"
