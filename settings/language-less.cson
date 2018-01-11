@@ -2,6 +2,7 @@
   editor:
     commentStart: "// "
   autocomplete:
+    extraWordCharacters: '-'
     symbols:
       variable:
         selector: ".variable"
